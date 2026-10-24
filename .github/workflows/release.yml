@@ -45,6 +45,7 @@ jobs:
 
       - name: install linux deps
         run: |
+          sudo apt-get update &&
           sudo apt-get -y install openssl graphviz nano texlive graphviz-dev unzip build-essential
 
       - name: build the book
