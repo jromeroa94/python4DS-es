@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Números – Python for Data Science</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -40,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,20 +67,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./strings.html" rel="next">
 <link href="./boolean-data.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b8d228dfc8ea33805744e1debdbf65c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -115,16 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LXJC37BJVX"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -132,173 +113,10 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 
 <meta name="twitter:title" content="Números – Python for Data Science">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="numbers_files/figure-html/cell-15-output-1.svg">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -324,7 +142,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Python for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/aeturrell/python4DS" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jromeroa94/python4DS-es" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -636,11 +454,10 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
   <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1">Ejercicios</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/numbers.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/numbers.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./boolean-data.html">Transformar</a></li><li class="breadcrumb-item"><a href="./numbers.html"><span class="chapter-title">Números</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -669,24 +486,24 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <p>Este capítulo usa sobre todo funciones de <strong>pandas</strong>, que probablemente ya tengas instalado, aunque puedes instalarlo con <code>uv add pandas</code> en la terminal. Usaremos ejemplos reales de nycflights13, así como ejemplos de juguete hechos con datos ficticios.</p>
 <p>Primero carguemos los datos de vuelos de NYC</p>
 <div id="6c89ca3d" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/byuidatascience/data4python4ds/master/data-raw/flights/flights.csv"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(url)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="conteos" class="level3">
 <h3 class="anchored" data-anchor-id="conteos">Conteos</h3>
 <p>Es sorprendente cuánta ciencia de datos puedes hacer solo con conteos y un poco de aritmética básica, por eso <strong>pandas</strong> se esfuerza en que contar sea lo más fácil posible con <code>.count()</code> y <code>.value_counts()</code>. El primero simplemente da un conteo directo de todos los elementos que no son NA:</p>
 <div id="18f1ee4c" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dest"</span>].count()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dest"</span>].count()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>np.int64(336776)</code></pre>
 </div>
 </div>
 <p>El segundo da un conteo desglosado por tipo:</p>
 <div id="161a24ea" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dest"</span>].value_counts()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dest"</span>].value_counts()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>dest
 ORD    17283
@@ -705,26 +522,26 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </div>
 <p>Esto se ordena automáticamente empezando por la categoría más común. Puedes hacer el mismo cálculo “a mano” con <code>group_by()</code>, <code>agg()</code> y luego la función de conteo. Esto es útil porque te permite calcular otros resúmenes al mismo tiempo:</p>
 <div id="8554277a" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    flights.groupby([<span class="st">"dest"</span>])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        mean_delay<span class="op">=</span>(<span class="st">"dep_delay"</span>, <span class="st">"mean"</span>),</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        count_flights<span class="op">=</span>(<span class="st">"dest"</span>, <span class="st">"count"</span>),</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    .sort_values(by<span class="op">=</span><span class="st">"count_flights"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">mean_delay</th>
 <th data-quarto-table-cell-role="th">count_flights</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">dest</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -732,57 +549,57 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">ORD</th>
+<td data-quarto-table-cell-role="th">ORD</td>
 <td>13.570484</td>
 <td>17283</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">ATL</th>
+<td data-quarto-table-cell-role="th">ATL</td>
 <td>12.509824</td>
 <td>17215</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">LAX</th>
+<td data-quarto-table-cell-role="th">LAX</td>
 <td>9.401344</td>
 <td>16174</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">BOS</th>
+<td data-quarto-table-cell-role="th">BOS</td>
 <td>8.730613</td>
 <td>15508</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">MCO</th>
+<td data-quarto-table-cell-role="th">MCO</td>
 <td>11.275998</td>
 <td>14082</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">MTJ</th>
-<td>17.642857</td>
+<td data-quarto-table-cell-role="th">HDN</td>
+<td>12.285714</td>
 <td>15</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">SBN</th>
+<td data-quarto-table-cell-role="th">SBN</td>
 <td>21.100000</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">ANC</th>
+<td data-quarto-table-cell-role="th">ANC</td>
 <td>12.875000</td>
 <td>8</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">LGA</th>
+<td data-quarto-table-cell-role="th">LGA</td>
 <td>NaN</td>
 <td>1</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">LEX</th>
+<td data-quarto-table-cell-role="th">LEX</td>
 <td>-9.000000</td>
 <td>1</td>
 </tr>
@@ -795,65 +612,65 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </div>
 <p>Ten en cuenta que un conteo ponderado no es más que una suma. Por ejemplo, podrías “contar” el número de millas que voló cada avión:</p>
 <div id="061decae" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"tailnum"</span>).agg(miles<span class="op">=</span>(<span class="st">"distance"</span>, <span class="st">"sum"</span>)))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"tailnum"</span>).agg(miles<span class="op">=</span>(<span class="st">"distance"</span>, <span class="st">"sum"</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">miles</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">tailnum</th>
 <th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">D942DN</th>
+<td data-quarto-table-cell-role="th">D942DN</td>
 <td>3418</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">N0EGMQ</th>
+<td data-quarto-table-cell-role="th">N0EGMQ</td>
 <td>250866</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">N10156</th>
+<td data-quarto-table-cell-role="th">N10156</td>
 <td>115966</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">N102UW</th>
+<td data-quarto-table-cell-role="th">N102UW</td>
 <td>25722</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">N103US</th>
+<td data-quarto-table-cell-role="th">N103US</td>
 <td>24619</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">N997DL</th>
+<td data-quarto-table-cell-role="th">N997DL</td>
 <td>54669</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">N998AT</th>
+<td data-quarto-table-cell-role="th">N998AT</td>
 <td>15432</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">N998DL</th>
+<td data-quarto-table-cell-role="th">N998DL</td>
 <td>66052</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">N999DN</th>
+<td data-quarto-table-cell-role="th">N999DN</td>
 <td>54623</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">N9EAMQ</th>
+<td data-quarto-table-cell-role="th">N9EAMQ</td>
 <td>167317</td>
 </tr>
 </tbody>
@@ -865,65 +682,65 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </div>
 <p>Puedes contar los valores faltantes combinando <code>sum()</code> e <code>isnull()</code>. En el dataset de vuelos, esto representa los vuelos cancelados. Ten en cuenta que, como no existe un nombre sencillo en forma de string para aplicar <code>.isnull()</code> seguido de <code>.sum()</code> (a diferencia de ejecutar solo <code>sum()</code>, que vendría dado por el string “sum”), necesitamos usar una función lambda a continuación:</p>
 <div id="ecdb5630" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"dest"</span>).agg(n_cancelled<span class="op">=</span>(<span class="st">"dep_time"</span>, <span class="kw">lambda</span> x: x.isnull().<span class="bu">sum</span>())))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"dest"</span>).agg(n_cancelled<span class="op">=</span>(<span class="st">"dep_time"</span>, <span class="kw">lambda</span> x: x.isnull().<span class="bu">sum</span>())))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">n_cancelled</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">dest</th>
 <th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">ABQ</th>
+<td data-quarto-table-cell-role="th">ABQ</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">ACK</th>
+<td data-quarto-table-cell-role="th">ACK</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">ALB</th>
+<td data-quarto-table-cell-role="th">ALB</td>
 <td>20</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">ANC</th>
+<td data-quarto-table-cell-role="th">ANC</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">ATL</th>
+<td data-quarto-table-cell-role="th">ATL</td>
 <td>317</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">TPA</th>
+<td data-quarto-table-cell-role="th">TPA</td>
 <td>59</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">TUL</th>
+<td data-quarto-table-cell-role="th">TUL</td>
 <td>16</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">TVC</th>
+<td data-quarto-table-cell-role="th">TVC</td>
 <td>5</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">TYS</th>
+<td data-quarto-table-cell-role="th">TYS</td>
 <td>52</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">XNA</th>
+<td data-quarto-table-cell-role="th">XNA</td>
 <td>25</td>
 </tr>
 </tbody>
@@ -947,20 +764,20 @@ Name: count, Length: 105, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="mínimo-y-máximo">Mínimo y máximo</h3>
 <p>Las funciones aritméticas hacen lo que esperarías.</p>
 <div id="a473cd56" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"distance"</span>].<span class="bu">max</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"distance"</span>].<span class="bu">max</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>np.int64(4983)</code></pre>
 </div>
 </div>
 <p>A veces querrás ver el valor máximo o mínimo a lo largo de filas <em>o</em> columnas. Como suele ocurrir con <strong>pandas</strong>, puedes indicar si una función se aplica a filas o columnas pasándole <code>axis=0</code> (índice) o <code>axis=1</code> (columnas). La designación del eje puede ser confusa: recuerda que estás indicando sobre qué dimensión quieres agregar, y te queda la otra dimensión. Así que si queremos encontrar el mínimo en cada fila, agregamos / colapsamos las columnas, por lo que necesitamos pasar <code>axis=1</code>.</p>
 <div id="96285702" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>], <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">2</span>, pd.NA]})</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">7</span>], <span class="st">"y"</span>: [<span class="dv">3</span>, <span class="dv">2</span>, pd.NA]})</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -970,17 +787,17 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>1</td>
 <td>3</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>5</td>
 <td>2</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>7</td>
 <td>&lt;NA&gt;</td>
 </tr>
@@ -992,7 +809,7 @@ Name: count, Length: 105, dtype: int64</code></pre>
 </div>
 <p>Ahora busquemos el mínimo por fila:</p>
 <div id="5bae5499" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0    1
 1    2
@@ -1005,12 +822,12 @@ dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="aritmética-modular">Aritmética modular</h3>
 <p>La aritmética modular es el nombre técnico del tipo de matemáticas que haces con números enteros, es decir, la división que da como resultado un número entero y un resto. En Python, <code>//</code> hace la división entera y <code>%</code> calcula el resto:</p>
 <div id="3af6ce86" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"divided by 3 gives"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"remainder:"</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x <span class="op">%</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"divisions:"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x <span class="op">//</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([x <span class="op">//</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 divided by 3 gives
@@ -1022,15 +839,15 @@ divisions:
 </div>
 <p>La aritmética modular resulta práctica para el dataset de vuelos, porque podemos usarla para descomponer la variable <code>sched_dep_time</code> en <code>hour</code> y <code>minute</code>:</p>
 <div id="6be57e34" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>flights.assign(</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>flights.assign(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    hour<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">"sched_dep_time"</span>] <span class="op">//</span> <span class="dv">100</span>,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    minute<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">"sched_dep_time"</span>] <span class="op">%</span> <span class="dv">100</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1057,7 +874,7 @@ divisions:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1079,7 +896,7 @@ divisions:
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1101,7 +918,7 @@ divisions:
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1123,7 +940,7 @@ divisions:
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1145,7 +962,7 @@ divisions:
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1167,7 +984,7 @@ divisions:
 <td>2013-01-01T11:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1189,7 +1006,7 @@ divisions:
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336771</th>
+<td data-quarto-table-cell-role="th">336771</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -1211,7 +1028,7 @@ divisions:
 <td>2013-09-30T18:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336772</th>
+<td data-quarto-table-cell-role="th">336772</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -1233,7 +1050,7 @@ divisions:
 <td>2013-10-01T02:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336773</th>
+<td data-quarto-table-cell-role="th">336773</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -1255,7 +1072,7 @@ divisions:
 <td>2013-09-30T16:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336774</th>
+<td data-quarto-table-cell-role="th">336774</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -1277,7 +1094,7 @@ divisions:
 <td>2013-09-30T15:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336775</th>
+<td data-quarto-table-cell-role="th">336775</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -1310,19 +1127,19 @@ divisions:
 <h3 class="anchored" data-anchor-id="logaritmos">Logaritmos</h3>
 <p>Los logaritmos son una transformación increíblemente útil para tratar datos que abarcan varios órdenes de magnitud. También convierten el crecimiento exponencial en crecimiento lineal. Por ejemplo, piensa en el interés compuesto: la cantidad de dinero que tienes en <code>year + 1</code> es la cantidad que tenías en <code>year</code> multiplicada por la tasa de interés. Eso da una fórmula como <code>money = starting * interest ** year</code>:</p>
 <div id="a3ffc085" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>starting <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>interest <span class="op">=</span> <span class="fl">1.05</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>money <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"year"</span>: <span class="dv">2000</span> <span class="op">+</span> np.arange(<span class="dv">1</span>, <span class="dv">51</span>), <span class="st">"money"</span>: starting <span class="op">*</span> interest <span class="op">**</span> np.arange(<span class="dv">1</span>, <span class="dv">51</span>)}</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>money.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>money.head()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1332,27 +1149,27 @@ divisions:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2001</td>
 <td>105.000000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2002</td>
 <td>110.250000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2003</td>
 <td>115.762500</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2004</td>
 <td>121.550625</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2005</td>
 <td>127.628156</td>
 </tr>
@@ -1364,7 +1181,7 @@ divisions:
 </div>
 <p>Si graficas estos datos, obtendrás una curva exponencial:</p>
 <div id="aaad2abb" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>money.plot(x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"money"</span>)<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>money.plot(x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"money"</span>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1375,7 +1192,7 @@ divisions:
 </div>
 <p>Aplicar una transformación logarítmica al eje y da una línea recta:</p>
 <div id="bbcf4d7c" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>money.plot(x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"money"</span>, logy<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>money.plot(x<span class="op">=</span><span class="st">"year"</span>, y<span class="op">=</span><span class="st">"money"</span>, logy<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1392,12 +1209,12 @@ divisions:
 <h3 class="anchored" data-anchor-id="redondeo">Redondeo</h3>
 <p>Para redondear a un número concreto de decimales, usa <code>.round(n)</code>, donde <code>n</code> es el número de decimales al que quieres redondear.</p>
 <div id="ec1a09ca" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>money.head().<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>money.head().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1407,27 +1224,27 @@ divisions:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2001</td>
 <td>105.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2002</td>
 <td>110.25</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2003</td>
 <td>115.76</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2004</td>
 <td>121.55</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2005</td>
 <td>127.63</td>
 </tr>
@@ -1439,12 +1256,12 @@ divisions:
 </div>
 <p>Esto también se puede aplicar a columnas individuales o de forma diferenciada a cada columna mediante un diccionario:</p>
 <div id="9a306519" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>money.head().<span class="bu">round</span>({<span class="st">"year"</span>: <span class="dv">0</span>, <span class="st">"money"</span>: <span class="dv">1</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>money.head().<span class="bu">round</span>({<span class="st">"year"</span>: <span class="dv">0</span>, <span class="st">"money"</span>: <span class="dv">1</span>})</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1454,27 +1271,27 @@ divisions:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2001</td>
 <td>105.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2002</td>
 <td>110.2</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2003</td>
 <td>115.8</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2004</td>
 <td>121.6</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2005</td>
 <td>127.6</td>
 </tr>
@@ -1486,12 +1303,12 @@ divisions:
 </div>
 <p><code>.round(n)</code> redondea al <code>10**(-n)</code> más cercano, así que <code>n = 2</code> redondeará al 0,01 más cercano. Esta definición es útil porque implica que <code>.round(-2)</code> redondeará a la centena más cercana, que es justo lo que hace:</p>
 <div id="fb9dfb59" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>money.tail().<span class="bu">round</span>({<span class="st">"year"</span>: <span class="dv">0</span>, <span class="st">"money"</span>: <span class="op">-</span><span class="dv">2</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>money.tail().<span class="bu">round</span>({<span class="st">"year"</span>: <span class="dv">0</span>, <span class="st">"money"</span>: <span class="op">-</span><span class="dv">2</span>})</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1501,27 +1318,27 @@ divisions:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">45</th>
+<td data-quarto-table-cell-role="th">45</td>
 <td>2046</td>
 <td>900.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">46</th>
+<td data-quarto-table-cell-role="th">46</td>
 <td>2047</td>
 <td>1000.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">47</th>
+<td data-quarto-table-cell-role="th">47</td>
 <td>2048</td>
 <td>1000.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">48</th>
+<td data-quarto-table-cell-role="th">48</td>
 <td>2049</td>
 <td>1100.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">49</th>
+<td data-quarto-table-cell-role="th">49</td>
 <td>2050</td>
 <td>1100.0</td>
 </tr>
@@ -1533,7 +1350,7 @@ divisions:
 </div>
 <p>A veces querrás redondear según cifras significativas en lugar de decimales. No hay una forma realmente sencilla de hacerlo, pero puedes definir una función personalizada. Aquí tienes un ejemplo de redondeo a 2 cifras significativas (cambia el <code>2</code> de abajo para redondear a otro número de cifras significativas):</p>
 <div id="f0290c0a" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].head().<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">float</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.2g}</span><span class="ss">"</span>)<span class="sc">:g}</span><span class="ss">'</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].head().<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">float</span>(<span class="ss">f'</span><span class="sc">{</span><span class="bu">float</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.2g}</span><span class="ss">"</span>)<span class="sc">:g}</span><span class="ss">'</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>0    100.0
 1    110.0
@@ -1545,35 +1362,35 @@ Name: money, dtype: float64</code></pre>
 </div>
 <p>Si tienes un array o una lista de números fuera de un dataframe, puedes usar la función de <strong>numpy</strong></p>
 <div id="6a6a4644" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>([<span class="fl">1.5</span>, <span class="fl">2.5</span>, <span class="fl">1.4</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>([<span class="fl">1.5</span>, <span class="fl">2.5</span>, <span class="fl">1.4</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([2., 2., 1.])</code></pre>
 </div>
 </div>
 <p><strong>numpy</strong> también tiene los métodos <code>.floor()</code> y <code>.ceil()</code></p>
 <div id="6270c3cc" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>real_nums <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> np.random.random(size<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>real_nums</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>real_nums <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> np.random.random(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>real_nums</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>array([92.44790868, 82.67434516,  3.13025344, 93.50201546, 51.23614314,
-       27.73877732, 37.38200529, 42.44289822, 75.58118711, 89.20065315])</code></pre>
+<pre><code>array([31.33131804, 96.35126754, 93.28133639, 71.94937328,  7.61804889,
+       95.6221595 ,  5.61287716, 71.77183824, 78.70310121, 90.10758109])</code></pre>
 </div>
 </div>
 <div id="dc3608d6" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>np.ceil(real_nums)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>np.ceil(real_nums)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>array([93., 83.,  4., 94., 52., 28., 38., 43., 76., 90.])</code></pre>
+<pre><code>array([32., 97., 94., 72.,  8., 96.,  6., 72., 79., 91.])</code></pre>
 </div>
 </div>
 <div id="d577bb21" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>np.floor(real_nums)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>np.floor(real_nums)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>array([92., 82.,  3., 93., 51., 27., 37., 42., 75., 89.])</code></pre>
+<pre><code>array([31., 96., 93., 71.,  7., 95.,  5., 71., 78., 90.])</code></pre>
 </div>
 </div>
 <p>Recuerda que siempre puedes aplicar funciones de <strong>numpy</strong> a columnas de un dataframe de <strong>pandas</strong> así:</p>
 <div id="dca417b7" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].head().<span class="bu">apply</span>(np.ceil)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].head().<span class="bu">apply</span>(np.ceil)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>0    105.0
 1    111.0
@@ -1588,7 +1405,7 @@ Name: money, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="agregados-acumulativos-y-móviles">Agregados acumulativos y móviles</h3>
 <p><strong>pandas</strong> tiene varias funciones acumulativas, como <code>.cumsum()</code>, <code>.cummax()</code> y <code>.cummin()</code>, y <code>.cumprod()</code>.</p>
 <div id="c5d77818" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].tail().cumsum()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].tail().cumsum()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>45     943.425818
 46    1934.022928
@@ -1608,12 +1425,12 @@ Name: money, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="ranking">Ranking</h3>
 <p>La función de ranking de <strong>pandas</strong> es <code>.rank()</code>. Volvamos a los datos que creamos antes y asignémosles un ranking:</p>
 <div id="db1272a3" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1623,17 +1440,17 @@ Name: money, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>1</td>
 <td>3</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>5</td>
 <td>2</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>7</td>
 <td>&lt;NA&gt;</td>
 </tr>
@@ -1644,12 +1461,12 @@ Name: money, dtype: float64</code></pre>
 </div>
 </div>
 <div id="11ee0bac" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.rank()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.rank()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1659,17 +1476,17 @@ Name: money, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>1.0</td>
 <td>2.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2.0</td>
 <td>1.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>3.0</td>
 <td>NaN</td>
 </tr>
@@ -1681,12 +1498,12 @@ Name: money, dtype: float64</code></pre>
 </div>
 <p>¡Por supuesto, aquí no hay cambios porque los elementos ya estaban ordenados! También podemos obtener un ranking porcentual pasando el argumento con nombre <code>pct=True</code>.</p>
 <div id="edc7bd81" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df.rank(pct<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df.rank(pct<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1696,17 +1513,17 @@ Name: money, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>0.333333</td>
 <td>1.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>0.666667</td>
 <td>0.5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>1.000000</td>
 <td>NaN</td>
 </tr>
@@ -1722,9 +1539,9 @@ Name: money, dtype: float64</code></pre>
 <p>Los desfases te permiten ‘deslizar’ columnas hacia arriba o hacia abajo respecto de su posición original, es decir, desplazar su ubicación respecto del índice. La función que lo hace se llama <code>shift()</code> y produce adelantos (leads) o retardos (lags) según uses valores positivos o negativos, respectivamente. Recuerda que un adelanto desplazará el patrón de los datos hacia la izquierda cuando se grafique frente al índice, mientras que un retardo desplazará los patrones hacia la derecha. Los adelantos y retardos son especialmente útiles para datos de series temporales (que aún no hemos visto).</p>
 <p>Veamos un ejemplo de desfases con el dataframe <code>money</code> de antes:</p>
 <div id="9e499d1b" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money_lag_5"</span>] <span class="op">=</span> money[<span class="st">"money"</span>].shift(<span class="dv">5</span>)</span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money_lag_5"</span>] <span class="op">=</span> money[<span class="st">"money"</span>].shift(<span class="dv">5</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money_lead_10"</span>] <span class="op">=</span> money[<span class="st">"money"</span>].shift(<span class="op">-</span><span class="dv">10</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>money.set_index(<span class="st">"year"</span>).plot()<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>money.set_index(<span class="st">"year"</span>).plot()<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1752,14 +1569,14 @@ Name: money, dtype: float64</code></pre>
 <p>Ya hemos visto lo útiles que pueden ser <code>.mean()</code>, <code>.count()</code> y <code>.value_counts()</code> para el análisis. Sin embargo, <strong>pandas</strong> tiene muchas más funciones integradas de estadísticas descriptivas. Entre ellas están <code>.median()</code> (puede resultarte interesante comparar la media con la mediana al observar el retraso de salida por hora en los datos de vuelos), <code>.mode()</code>, <code>.min()</code> y <code>.max()</code>.</p>
 <p>La función <code>.quantile</code> proporciona una clase de estadísticas descriptivas útiles; <code>.quantile(0.5)</code> equivale a <code>median</code>. El cuantil al x% es el valor por debajo del cual se encuentra el x% de los valores. (Ten en cuenta que, con esta definición, <code>.quantile(1)</code> será lo mismo que <code>.max()</code>). Veamos un ejemplo con el percentil 25.</p>
 <div id="81389031" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].quantile(<span class="fl">0.25</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].quantile(<span class="fl">0.25</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>np.float64(190.92197566022773)</code></pre>
 </div>
 </div>
 <p>A veces no quieres solo un percentil, sino varios. <strong>pandas</strong> lo hace muy fácil al permitirte pasar una lista de cuantiles:</p>
 <div id="9eb35866" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].quantile([<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>money[<span class="st">"money"</span>].quantile([<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>0.00    105.000000
 0.25    190.921976
@@ -1773,19 +1590,19 @@ Name: money, dtype: float64</code></pre>
 <p>A veces no te interesa tanto dónde se concentra la mayor parte de los datos, sino cómo se dispersan. Dos medidas de uso común son la desviación estándar, <code>.std()</code>, y el rango intercuartílico, que puedes calcular a partir de los cuantiles correspondientes, es decir, es el cuantil al 75% menos el cuantil al 25%, y te da el rango que contiene el 50% central de los datos.</p>
 <p>Podemos usar esto para revelar una pequeña rareza en los datos de vuelos. Cabría esperar que la dispersión de la distancia entre origen y destino fuera cero, ya que los aeropuertos siempre están en el mismo lugar. Pero el código siguiente da la impresión de que un aeropuerto, <a href="https://en.wikipedia.org/wiki/Eagle_County_Regional_Airport">EGE</a>, podría haberse movido.</p>
 <div id="e2efca3a" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    flights.groupby([<span class="st">"origin"</span>, <span class="st">"dest"</span>])</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        distance_sd<span class="op">=</span>(<span class="st">"distance"</span>, <span class="kw">lambda</span> x: x.quantile(<span class="fl">0.75</span>) <span class="op">-</span> x.quantile(<span class="fl">0.25</span>)),</span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>        count<span class="op">=</span>(<span class="st">"distance"</span>, <span class="st">"count"</span>),</span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"distance_sd &gt; 0"</span>)</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1793,7 +1610,7 @@ Name: money, dtype: float64</code></pre>
 <th data-quarto-table-cell-role="th">distance_sd</th>
 <th data-quarto-table-cell-role="th">count</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">origin</th>
 <th data-quarto-table-cell-role="th">dest</th>
 <th data-quarto-table-cell-role="th"></th>
@@ -1802,14 +1619,14 @@ Name: money, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">EWR</th>
-<th data-quarto-table-cell-role="th">EGE</th>
+<td data-quarto-table-cell-role="th">EWR</td>
+<td data-quarto-table-cell-role="th">EGE</td>
 <td>1.0</td>
 <td>110</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">JFK</th>
-<th data-quarto-table-cell-role="th">EGE</th>
+<td data-quarto-table-cell-role="th">JFK</td>
+<td data-quarto-table-cell-role="th">EGE</td>
 <td>1.0</td>
 <td>103</td>
 </tr>
@@ -1825,9 +1642,9 @@ Name: money, dtype: float64</code></pre>
 <p>Conviene recordar que todas las estadísticas descriptivas anteriores son una forma de reducir la distribución a un único número. Esto significa que son fundamentalmente reductivas y, si eliges la medida equivocada, puedes pasar por alto fácilmente diferencias importantes entre grupos. Por eso siempre es buena idea visualizar la distribución de los valores además de usar estadísticas agregadas.</p>
 <p>El gráfico siguiente muestra la distribución general de los retrasos de salida. La distribución es tan asimétrica que tenemos que acercarnos para ver la mayor parte de los datos. Esto sugiere que la media probablemente no sea un buen resumen y que quizá prefiramos la mediana.</p>
 <div id="b5ac4861" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dep_delay"</span>].plot.hist(</span>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"dep_delay"</span>].plot.hist(</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span><span class="dv">50</span>, title<span class="op">=</span><span class="st">"         Distribución: duración del retraso"</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1837,9 +1654,9 @@ Name: money, dtype: float64</code></pre>
 </div>
 </div>
 <div id="d4e76051" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>flights.query(<span class="st">"dep_delay &lt;= 120"</span>)[<span class="st">"dep_delay"</span>].plot.hist(</span>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>flights.query(<span class="st">"dep_delay &lt;= 120"</span>)[<span class="st">"dep_delay"</span>].plot.hist(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span><span class="dv">50</span>, title<span class="op">=</span><span class="st">"         Distribución: duración del retraso"</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1872,256 +1689,383 @@ Name: money, dtype: float64</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
         }
       }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
       return false;
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2129,161 +2073,185 @@ Name: money, dtype: float64</code></pre>
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./boolean-data.html" class="pagination-link" aria-label="Datos booleanos">
@@ -2301,4 +2269,4 @@ Name: money, dtype: float64</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/numbers.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/numbers.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

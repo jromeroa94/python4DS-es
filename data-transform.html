@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Transformación de datos – Python for Data Science</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -40,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,20 +67,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./workflow-style.html" rel="next">
 <link href="./workflow-basics.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b8d228dfc8ea33805744e1debdbf65c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -115,16 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LXJC37BJVX"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -135,169 +116,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -323,7 +142,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Python for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/aeturrell/python4DS" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jromeroa94/python4DS-es" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -640,11 +459,10 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
   <li><a href="#ejercicios-de-groupby" id="toc-ejercicios-de-groupby" class="nav-link" data-scroll-target="#ejercicios-de-groupby">Ejercicios de groupby</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/data-transform.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/data-transform.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./whole-game.html">Inicio rápido</a></li><li class="breadcrumb-item"><a href="./data-transform.html"><span class="chapter-title">Transformación de datos</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -675,12 +493,12 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="requisitos-previos">Requisitos previos</h3>
 <p>En este capítulo nos centraremos en el paquete <strong>pandas</strong>, una de las herramientas más utilizadas en ciencia de datos. Tendrás que asegurarte de tener <strong>pandas</strong> instalado. Para ello, puedes ejecutar</p>
 <div id="04dcb195" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Si este comando falla, no tienes <strong>pandas</strong> instalado. Abre la terminal en Visual Studio Code (Terminal -&gt; New Terminal), usa <code>cd</code> para ir a la carpeta en la que estás trabajando y escribe <code>uv add pandas</code>.</p>
 <p>Además, si quieres comprobar qué versión de <strong>pandas</strong> estás usando, se hace así</p>
 <div id="09eb2e2e" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.__version__</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.__version__</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'2.2.3'</code></pre>
 </div>
@@ -689,17 +507,17 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <p>Los datos ocupan unos 50 MB, así que necesitarás una buena conexión a internet o un poco de paciencia para que se descarguen.</p>
 <p>Descarguemos los datos:</p>
 <div id="eff283e8" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/byuidatascience/data4python4ds/master/data-raw/flights/flights.csv"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(url)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/byuidatascience/data4python4ds/master/data-raw/flights/flights.csv"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Si el código anterior funcionó, habrás descargado los datos en formato CSV y los habrás guardado en un dataframe. Veamos las primeras filas con la función <code>.head()</code>, que funciona con todos los dataframes de <strong>pandas</strong>.</p>
 <div id="39f99d76" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>flights.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>flights.head()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -726,7 +544,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -748,7 +566,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -770,7 +588,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -792,7 +610,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -814,7 +632,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <td>2013-01-01T10:00:00Z</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -843,7 +661,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 </div>
 <p>Para obtener información más general sobre las columnas, los tipos de datos (<code>dtypes</code>) de las columnas y el tamaño del dataset, usa <code>.info()</code>.</p>
 <div id="95dea97b" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights.info()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights.info()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 336776 entries, 0 to 336775
@@ -912,7 +730,7 @@ memory usage: 48.8+ MB</code></pre>
 <p>Los distintos tipos de datos de las columnas son importantes porque las operaciones que puedes realizar en una columna dependen mucho de su “tipo”; por ejemplo, puedes eliminar todos los signos de puntuación de los strings, mientras que puedes multiplicar ints y floats.</p>
 <p>Nos gustaría trabajar con la variable <code>"time_hour"</code> en forma de datetime; por suerte, <strong>pandas</strong> facilita realizar esa conversión en esa columna concreta</p>
 <div id="ffb275b0" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"time_hour"</span>]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"time_hour"</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>0         2013-01-01T10:00:00Z
 1         2013-01-01T10:00:00Z
@@ -929,7 +747,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </div>
 </div>
 <div id="88a8b983" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"time_hour"</span>] <span class="op">=</span> pd.to_datetime(flights[<span class="st">"time_hour"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%SZ"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"time_hour"</span>] <span class="op">=</span> pd.to_datetime(flights[<span class="st">"time_hour"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%SZ"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -941,7 +759,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <p>Quizá la noción más importante sobre los dataframes de <strong>pandas</strong> es que están construidos en torno a un índice situado en el lado izquierdo del dataframe. Cada vez que realizas una operación sobre un dataframe, tienes que pensar en cómo podría afectar o no al índice; o, dicho de otro modo, si quieres modificar el índice.</p>
 <p>Veamos un ejemplo sencillo de esto con un dataframe inventado:</p>
 <div id="1b6bd8b1" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>{</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"col0"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"col1"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
@@ -951,12 +769,12 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    },</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"row"</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>)],</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -969,7 +787,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">row0</th>
+<td data-quarto-table-cell-role="th">row0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -977,7 +795,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>alpha</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">row1</th>
+<td data-quarto-table-cell-role="th">row1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -985,7 +803,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>gamma</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">row2</th>
+<td data-quarto-table-cell-role="th">row2</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -993,7 +811,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>gamma</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">row3</th>
+<td data-quarto-table-cell-role="th">row3</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -1016,12 +834,12 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <li>por último, debemos especificar qué operación de <code>groupby()</code> queremos aplicar; al agregar la información de varias filas en una sola, tenemos que indicar cómo debe agregarse esa información. En este caso, usaremos <code>mean()</code>. En efecto, este paso aplica un estadístico a la(s) variable(s) que seleccionamos antes, en los grupos que creamos antes.</li>
 </ol>
 <div id="cb114649" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(flights.query(<span class="st">"dest == 'IAH'"</span>).groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>])[[<span class="st">"arr_delay"</span>]].mean())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(flights.query(<span class="st">"dest == 'IAH'"</span>).groupby([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>])[[<span class="st">"arr_delay"</span>]].mean())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1029,7 +847,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">arr_delay</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">year</th>
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th">day</th>
@@ -1038,51 +856,51 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th rowspan="11" data-quarto-table-cell-role="th" data-valign="top">2013</th>
-<th rowspan="5" data-quarto-table-cell-role="th" data-valign="top">1</th>
-<th data-quarto-table-cell-role="th">1</th>
+<td rowspan="11" data-quarto-table-cell-role="th" data-valign="top">2013</td>
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">1</td>
+<td data-quarto-table-cell-role="th">1</td>
 <td>17.850000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>7.000000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>18.315789</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>-3.200000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>20.230769</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th rowspan="5" data-quarto-table-cell-role="th" data-valign="top">12</th>
-<th data-quarto-table-cell-role="th">27</th>
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">12</td>
+<td data-quarto-table-cell-role="th">27</td>
 <td>6.166667</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">28</th>
+<td data-quarto-table-cell-role="th">28</td>
 <td>9.500000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">29</th>
+<td data-quarto-table-cell-role="th">29</td>
 <td>23.611111</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">30</th>
+<td data-quarto-table-cell-role="th">30</td>
 <td>23.684211</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">31</th>
+<td data-quarto-table-cell-role="th">31</td>
 <td>-4.933333</td>
 </tr>
 </tbody>
@@ -1106,7 +924,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="manipulación-de-filas-en-dataframes">Manipulación de filas en dataframes</h2>
 <p>Creemos algunos datos ficticios para mostrar cómo funciona esto.</p>
 <div id="3958ddb5" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>np.reshape(<span class="bu">range</span>(<span class="dv">36</span>), (<span class="dv">6</span>, <span class="dv">6</span>)),</span>
@@ -1115,12 +933,12 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    dtype<span class="op">=</span><span class="bu">float</span>,</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"col6"</span>] <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"pineapple"</span>, <span class="st">"mango"</span>, <span class="st">"kiwi"</span>, <span class="st">"lemon"</span>]</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1135,7 +953,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -1145,7 +963,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>apple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -1155,7 +973,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>orange</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -1165,7 +983,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>pineapple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -1175,7 +993,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>mango</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -1185,7 +1003,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>kiwi</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -1205,12 +1023,12 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <p>Para acceder directamente a una fila concreta, puedes usar <code>df.loc['rowname']</code>, o <code>df.loc[['rowname1', 'rowname2']]</code> para dos filas distintas.</p>
 <p>Por ejemplo,</p>
 <div id="0c2faf83" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.loc[[<span class="st">"a"</span>, <span class="st">"b"</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.loc[[<span class="st">"a"</span>, <span class="st">"b"</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1225,7 +1043,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -1235,7 +1053,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 <td>apple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -1252,7 +1070,7 @@ Name: time_hour, Length: 336776, dtype: object</code></pre>
 </div>
 <p>Pero también puedes acceder a filas concretas según su posición en el dataframe usando <code>.iloc</code>. Recuerda que los índices en Python empiezan en cero, así que para obtener la primera fila usarías <code>.iloc[0]</code>:</p>
 <div id="9d34599b" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>col0      0.0
 col1      1.0
@@ -1266,12 +1084,12 @@ Name: a, dtype: object</code></pre>
 </div>
 <p>Esto también funciona con varias filas. Obtengamos la primera y la tercera fila (en las posiciones 0 y 2) pasando una lista de posiciones:</p>
 <div id="9bf6313b" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1286,7 +1104,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -1296,7 +1114,7 @@ Name: a, dtype: object</code></pre>
 <td>apple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -1317,12 +1135,12 @@ Name: a, dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="filtrar-filas-con-query">Filtrar filas con query</h3>
 <p>Como en el ejemplo de los vuelos, también podemos filtrar filas según una condición usando <code>query()</code>:</p>
 <div id="54a9d2b1" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"col6 == 'kiwi' or col6 == 'pineapple'"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"col6 == 'kiwi' or col6 == 'pineapple'"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1337,7 +1155,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -1347,7 +1165,7 @@ Name: a, dtype: object</code></pre>
 <td>pineapple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -1364,12 +1182,12 @@ Name: a, dtype: object</code></pre>
 </div>
 <p>Para números, también puedes usar los signos de mayor que y menor que:</p>
 <div id="7849a962" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"col0 &gt; 6"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"col0 &gt; 6"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1384,7 +1202,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -1394,7 +1212,7 @@ Name: a, dtype: object</code></pre>
 <td>pineapple</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -1404,7 +1222,7 @@ Name: a, dtype: object</code></pre>
 <td>mango</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -1414,7 +1232,7 @@ Name: a, dtype: object</code></pre>
 <td>kiwi</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -1431,13 +1249,13 @@ Name: a, dtype: object</code></pre>
 </div>
 <p>De hecho, hay muchas opciones que funcionan con <code>query()</code>: además de <code>&gt;</code> (mayor que), puedes usar <code>&gt;=</code> (mayor o igual que), <code>&lt;</code> (menor que), <code>&lt;=</code> (menor o igual que), <code>==</code> (igual a) y <code>!=</code> (distinto de). También puedes usar los comandos <code>and</code> y <code>or</code> para combinar varias condiciones. Aquí tienes un ejemplo de <code>and</code> con el dataframe <code>flights</code>:</p>
 <div id="c6dd919f" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flights that departed on January 1</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>flights.query(<span class="st">"month == 1 and day == 1"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flights that departed on January 1</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>flights.query(<span class="st">"month == 1 and day == 1"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1464,7 +1282,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1486,7 +1304,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1508,7 +1326,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1530,7 +1348,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1552,7 +1370,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1574,7 +1392,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 11:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1596,7 +1414,7 @@ Name: a, dtype: object</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">837</th>
+<td data-quarto-table-cell-role="th">837</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1618,7 +1436,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-02 04:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">838</th>
+<td data-quarto-table-cell-role="th">838</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1640,7 +1458,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 21:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">839</th>
+<td data-quarto-table-cell-role="th">839</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1662,7 +1480,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-02 00:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">840</th>
+<td data-quarto-table-cell-role="th">840</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1684,7 +1502,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 20:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">841</th>
+<td data-quarto-table-cell-role="th">841</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1718,12 +1536,12 @@ Name: a, dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="reordenar-filas">Reordenar filas</h3>
 <p>Una y otra vez querrás reordenar las filas de tu dataframe según los valores de una columna concreta. <strong>pandas</strong> lo hace muy fácil con la función <code>.sort_values()</code>. Recibe un dataframe y un conjunto de nombres de columnas por los que ordenar. Si proporcionas más de un nombre de columna, cada columna adicional se usará para desempatar los valores de las columnas anteriores. Por ejemplo, el siguiente código ordena por la hora de salida, que está repartida en cuatro columnas.</p>
 <div id="9d5f4270" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights.sort_values([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_time"</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>flights.sort_values([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_time"</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1750,7 +1568,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1772,7 +1590,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1794,7 +1612,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1816,7 +1634,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1838,7 +1656,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 10:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -1860,7 +1678,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-01 11:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1882,7 +1700,7 @@ Name: a, dtype: object</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">111291</th>
+<td data-quarto-table-cell-role="th">111291</td>
 <td>2013</td>
 <td>12</td>
 <td>31</td>
@@ -1904,7 +1722,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-12-31 12:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">111292</th>
+<td data-quarto-table-cell-role="th">111292</td>
 <td>2013</td>
 <td>12</td>
 <td>31</td>
@@ -1926,7 +1744,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-12-31 13:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">111293</th>
+<td data-quarto-table-cell-role="th">111293</td>
 <td>2013</td>
 <td>12</td>
 <td>31</td>
@@ -1948,7 +1766,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-12-31 21:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">111294</th>
+<td data-quarto-table-cell-role="th">111294</td>
 <td>2013</td>
 <td>12</td>
 <td>31</td>
@@ -1970,7 +1788,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-12-31 11:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">111295</th>
+<td data-quarto-table-cell-role="th">111295</td>
 <td>2013</td>
 <td>12</td>
 <td>31</td>
@@ -2000,12 +1818,12 @@ Name: a, dtype: object</code></pre>
 </div>
 <p>Puedes usar el argumento de palabra clave <code>ascending=False</code> para ordenar por una o varias columnas en orden descendente. Por ejemplo, este código muestra los vuelos con más retraso:</p>
 <div id="483acdc1" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>flights.sort_values(<span class="st">"dep_delay"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>flights.sort_values(<span class="st">"dep_delay"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2032,7 +1850,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7072</th>
+<td data-quarto-table-cell-role="th">7072</td>
 <td>2013</td>
 <td>1</td>
 <td>9</td>
@@ -2054,7 +1872,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-09 14:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">235778</th>
+<td data-quarto-table-cell-role="th">235778</td>
 <td>2013</td>
 <td>6</td>
 <td>15</td>
@@ -2076,7 +1894,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-06-15 23:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8239</th>
+<td data-quarto-table-cell-role="th">8239</td>
 <td>2013</td>
 <td>1</td>
 <td>10</td>
@@ -2098,7 +1916,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-01-10 21:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">327043</th>
+<td data-quarto-table-cell-role="th">327043</td>
 <td>2013</td>
 <td>9</td>
 <td>20</td>
@@ -2120,7 +1938,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-09-20 22:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">270376</th>
+<td data-quarto-table-cell-role="th">270376</td>
 <td>2013</td>
 <td>7</td>
 <td>22</td>
@@ -2142,7 +1960,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-07-22 20:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -2164,7 +1982,7 @@ Name: a, dtype: object</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336771</th>
+<td data-quarto-table-cell-role="th">336771</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -2186,7 +2004,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-09-30 18:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336772</th>
+<td data-quarto-table-cell-role="th">336772</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -2208,7 +2026,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-10-01 02:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336773</th>
+<td data-quarto-table-cell-role="th">336773</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -2230,7 +2048,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-09-30 16:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336774</th>
+<td data-quarto-table-cell-role="th">336774</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -2252,7 +2070,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-09-30 15:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336775</th>
+<td data-quarto-table-cell-role="th">336775</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -2282,16 +2100,16 @@ Name: a, dtype: object</code></pre>
 </div>
 <p>Por supuesto, puedes combinar todas las manipulaciones de filas anteriores para resolver problemas más complejos. Por ejemplo, podríamos buscar los tres principales destinos de los vuelos que llegaron con más retraso y que salieron aproximadamente a tiempo:</p>
 <div id="a939f3c2" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    flights.query(<span class="st">"dep_delay &lt;= 10 and dep_delay &gt;= -10"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">"arr_delay"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    .iloc[[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]]</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2318,7 +2136,7 @@ Name: a, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">55985</th>
+<td data-quarto-table-cell-role="th">55985</td>
 <td>2013</td>
 <td>11</td>
 <td>1</td>
@@ -2340,7 +2158,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-11-01 11:00:00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">181270</th>
+<td data-quarto-table-cell-role="th">181270</td>
 <td>2013</td>
 <td>4</td>
 <td>18</td>
@@ -2362,7 +2180,7 @@ Name: a, dtype: object</code></pre>
 <td>2013-04-18 10:00:00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">256340</th>
+<td data-quarto-table-cell-role="th">256340</td>
 <td>2013</td>
 <td>7</td>
 <td>7</td>
@@ -2429,13 +2247,13 @@ Nota
 <h3 class="anchored" data-anchor-id="crear-nuevas-columnas">Crear nuevas columnas</h3>
 <p>Pasemos ahora a crear nuevas columnas, ya sea con información nueva o a partir de columnas existentes. Dado un dataframe, <code>df</code>, crear una nueva columna con el mismo valor repetido es tan fácil como usar corchetes con un string (texto entre comillas) dentro.</p>
 <div id="86827cf9" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column0"</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column0"</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2451,7 +2269,7 @@ Nota
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -2462,7 +2280,7 @@ Nota
 <td>5</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -2473,7 +2291,7 @@ Nota
 <td>5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -2484,7 +2302,7 @@ Nota
 <td>5</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -2495,7 +2313,7 @@ Nota
 <td>5</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -2506,7 +2324,7 @@ Nota
 <td>5</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -2524,13 +2342,13 @@ Nota
 </div>
 <p>Si hacemos la misma operación otra vez, pero con un lado derecho distinto, se sobrescribirá lo que ya había en esa columna. Veámoslo con un ejemplo en el que ponemos valores diferentes en cada posición asignando una lista a la nueva columna.</p>
 <div id="0ab01f9d" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column0"</span>] <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column0"</span>] <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2546,7 +2364,7 @@ Nota
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -2557,7 +2375,7 @@ Nota
 <td>0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -2568,7 +2386,7 @@ Nota
 <td>1</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -2579,7 +2397,7 @@ Nota
 <td>2</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -2590,7 +2408,7 @@ Nota
 <td>3</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -2601,7 +2419,7 @@ Nota
 <td>4</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -2623,7 +2441,7 @@ Nota
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Ejercicio
+Ejercicio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2632,13 +2450,13 @@ Nota
 </div>
 <p>Si pasamos una lista dentro de los corchetes, en realidad podemos crear más de una columna nueva:</p>
 <div id="fff10e83" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"new_column1"</span>, <span class="st">"new_column2"</span>]] <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">6</span>]</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"new_column1"</span>, <span class="st">"new_column2"</span>]] <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2656,7 +2474,7 @@ Nota
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -2669,7 +2487,7 @@ Nota
 <td>6</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -2682,7 +2500,7 @@ Nota
 <td>6</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -2695,7 +2513,7 @@ Nota
 <td>6</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -2708,7 +2526,7 @@ Nota
 <td>6</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -2721,7 +2539,7 @@ Nota
 <td>6</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -2741,13 +2559,13 @@ Nota
 </div>
 <p>Muy a menudo querrás crear una nueva columna que sea el resultado de una operación sobre columnas existentes. Hay un par de formas de hacerlo. El método ‘independiente’ funciona de forma similar a lo que acabamos de ver, salvo que también hacemos referencia al dataframe en el lado derecho de la sentencia de asignación:</p>
 <div id="82477100" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column3"</span>] <span class="op">=</span> df[<span class="st">"col0"</span>] <span class="op">-</span> df[<span class="st">"new_column0"</span>]</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"new_column3"</span>] <span class="op">=</span> df[<span class="st">"col0"</span>] <span class="op">-</span> df[<span class="st">"new_column0"</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2766,7 +2584,7 @@ Nota
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -2780,7 +2598,7 @@ Nota
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -2794,7 +2612,7 @@ Nota
 <td>5.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -2808,7 +2626,7 @@ Nota
 <td>10.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -2822,7 +2640,7 @@ Nota
 <td>15.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -2836,7 +2654,7 @@ Nota
 <td>20.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -2857,17 +2675,17 @@ Nota
 </div>
 <p>La otra forma de hacerlo implica una sentencia ‘assign()’ y se usa cuando quieres encadenar varios pasos (como vimos antes). Estas usan una sintaxis especial llamada sentencia ‘lambda’, que (al menos aquí) simplemente proporciona una forma de indicarle a <strong>pandas</strong> que queremos realizar la operación en cada fila. A continuación tienes un ejemplo con los datos de vuelos. Ten en cuenta, eso sí, que la palabra ‘row’ de abajo es un marcador; podrías sustituirla por cualquier nombre de variable (por ejemplo, <code>x</code>), pero <code>row</code> hace que lo que ocurre sea un poco más claro.</p>
 <div id="55645bdd" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    flights.assign(</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        gain<span class="op">=</span><span class="kw">lambda</span> row: row[<span class="st">"dep_delay"</span>] <span class="op">-</span> row[<span class="st">"arr_delay"</span>],</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        speed<span class="op">=</span><span class="kw">lambda</span> row: row[<span class="st">"distance"</span>] <span class="op">/</span> row[<span class="st">"air_time"</span>] <span class="op">*</span> <span class="dv">60</span>,</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2896,7 +2714,7 @@ Nota
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -2920,7 +2738,7 @@ Nota
 <td>370.044053</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -2944,7 +2762,7 @@ Nota
 <td>374.273128</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -2968,7 +2786,7 @@ Nota
 <td>408.375000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -2992,7 +2810,7 @@ Nota
 <td>516.721311</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3016,7 +2834,7 @@ Nota
 <td>394.137931</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -3040,7 +2858,7 @@ Nota
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336771</th>
+<td data-quarto-table-cell-role="th">336771</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3064,7 +2882,7 @@ Nota
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336772</th>
+<td data-quarto-table-cell-role="th">336772</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3088,7 +2906,7 @@ Nota
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336773</th>
+<td data-quarto-table-cell-role="th">336773</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3112,7 +2930,7 @@ Nota
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336774</th>
+<td data-quarto-table-cell-role="th">336774</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3136,7 +2954,7 @@ Nota
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336775</th>
+<td data-quarto-table-cell-role="th">336775</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3177,7 +2995,7 @@ Nota
 </div>
 <div class="callout-body-container callout-body">
 <p>Una función lambda es como cualquier función normal de Python, salvo que no tiene nombre y suele escribirse en una sola línea de código. Una función lambda consta de un argumento, dos puntos y una expresión, como la siguiente función lambda, que multiplica una entrada por tres.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> x: x<span class="op">*</span><span class="dv">3</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> x: x<span class="op">*</span><span class="dv">3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -3185,7 +3003,7 @@ Nota
 <h3 class="anchored" data-anchor-id="acceder-a-columnas">Acceder a columnas</h3>
 <p>Al igual que al seleccionar filas, hay muchas opciones y formas de seleccionar las columnas sobre las que operar. La de sintaxis más sencilla es el nombre del dataframe seguido de corchetes y el nombre de la columna (como string)</p>
 <div id="4643b978" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"col0"</span>]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"col0"</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>a     0.0
 b     6.0
@@ -3198,12 +3016,12 @@ Name: col0, dtype: float64</code></pre>
 </div>
 <p>Si necesitas seleccionar <em>varias</em> columnas, no puedes pasar simplemente un string a <code>df[...]</code>; en su lugar, debes pasar un objeto iterable (y que, por tanto, tenga varios elementos). La forma más directa de seleccionar varias columnas es pasar una <em>lista</em>. Recuerda que las listas van entre corchetes, así que veremos algo con corchetes repetidos: unos para acceder al interior del dataframe y otros para la lista.</p>
 <div id="219852d8" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"col0"</span>, <span class="st">"new_column0"</span>, <span class="st">"col2"</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"col0"</span>, <span class="st">"new_column0"</span>, <span class="st">"col2"</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3214,37 +3032,37 @@ Name: col0, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>0</td>
 <td>2.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>1</td>
 <td>8.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>2</td>
 <td>14.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>3</td>
 <td>20.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>4</td>
 <td>26.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>5</td>
 <td>32.0</td>
@@ -3257,12 +3075,12 @@ Name: col0, dtype: float64</code></pre>
 </div>
 <p>Si quieres acceder a filas concretas al mismo tiempo, usa la función de acceso <code>.loc</code>:</p>
 <div id="eabfd313" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df.loc[[<span class="st">"a"</span>, <span class="st">"b"</span>], [<span class="st">"col0"</span>, <span class="st">"new_column0"</span>, <span class="st">"col2"</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df.loc[[<span class="st">"a"</span>, <span class="st">"b"</span>], [<span class="st">"col0"</span>, <span class="st">"new_column0"</span>, <span class="st">"col2"</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3273,13 +3091,13 @@ Name: col0, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>0</td>
 <td>2.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>1</td>
 <td>8.0</td>
@@ -3292,12 +3110,12 @@ Name: col0, dtype: float64</code></pre>
 </div>
 <p>Y, al igual que con las filas, podemos acceder a las columnas por su posición usando <code>.iloc</code> (donde <code>:</code> representa ‘cualquier fila’).</p>
 <div id="b6ae1605" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3307,32 +3125,32 @@ Name: col0, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 </tr>
@@ -3345,12 +3163,12 @@ Name: col0, dtype: float64</code></pre>
 <p>Hay otras formas de acceder a varias columnas que usan slicing (rebanado), pero dejaremos ese tema para otro momento.</p>
 <p>A veces querrás seleccionar columnas según el <em>tipo</em> de datos que contienen. Para ello, <strong>pandas</strong> proporciona la función <code>.select_dtypes()</code>. Usémosla para seleccionar todas las columnas con enteros en los datos de vuelos.</p>
 <div id="62f578d1" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>flights.select_dtypes(<span class="st">"int"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>flights.select_dtypes(<span class="st">"int"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3367,7 +3185,7 @@ Name: col0, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3379,7 +3197,7 @@ Name: col0, dtype: float64</code></pre>
 <td>15</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3391,7 +3209,7 @@ Name: col0, dtype: float64</code></pre>
 <td>29</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3403,7 +3221,7 @@ Name: col0, dtype: float64</code></pre>
 <td>40</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3415,7 +3233,7 @@ Name: col0, dtype: float64</code></pre>
 <td>45</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -3427,7 +3245,7 @@ Name: col0, dtype: float64</code></pre>
 <td>0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -3439,7 +3257,7 @@ Name: col0, dtype: float64</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336771</th>
+<td data-quarto-table-cell-role="th">336771</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3451,7 +3269,7 @@ Name: col0, dtype: float64</code></pre>
 <td>55</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336772</th>
+<td data-quarto-table-cell-role="th">336772</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3463,7 +3281,7 @@ Name: col0, dtype: float64</code></pre>
 <td>0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336773</th>
+<td data-quarto-table-cell-role="th">336773</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3475,7 +3293,7 @@ Name: col0, dtype: float64</code></pre>
 <td>10</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">336774</th>
+<td data-quarto-table-cell-role="th">336774</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3487,7 +3305,7 @@ Name: col0, dtype: float64</code></pre>
 <td>59</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">336775</th>
+<td data-quarto-table-cell-role="th">336775</td>
 <td>2013</td>
 <td>9</td>
 <td>30</td>
@@ -3508,7 +3326,7 @@ Name: col0, dtype: float64</code></pre>
 <p>En otras ocasiones querrás seleccionar columnas según criterios como patrones en el <em>nombre</em> de la columna. Como Python tiene muy buen soporte para texto, esto es muy posible, pero no suele estar tan integrado en las funciones de <strong>pandas</strong>. El truco consiste en generar una lista con los nombres de columna que quieres a partir del patrón que te interesa.</p>
 <p>Veamos un par de ejemplos. Primero, obtengamos todas las columnas de nuestro dataframe <code>df</code> que empiezan por <code>"new_..."</code>. Generaremos una lista de valores verdaderos y falsos que indican si cada columna empieza por “new” y luego pasaremos esos valores a <code>.loc</code>, que solo devolverá las columnas cuyo resultado fue <code>True</code>. Para mostrar lo que ocurre, lo dividiremos en dos pasos:</p>
 <div id="5aaae8bd" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The list of columns:"</span>)</span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The list of columns:"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -3517,7 +3335,7 @@ Name: col0, dtype: float64</code></pre>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The selection from the data frame:"</span>)</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>df.loc[:, df.columns.<span class="bu">str</span>.startswith(<span class="st">"new"</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>df.loc[:, df.columns.<span class="bu">str</span>.startswith(<span class="st">"new"</span>)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The list of columns:
 Index(['col0', 'col1', 'col2', 'col3', 'col4', 'col5', 'col6', 'new_column0',
@@ -3535,7 +3353,7 @@ The selection from the data frame:</code></pre>
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3547,42 +3365,42 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0</td>
 <td>5</td>
 <td>6</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>1</td>
 <td>5</td>
 <td>6</td>
 <td>5.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>2</td>
 <td>5</td>
 <td>6</td>
 <td>10.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>3</td>
 <td>5</td>
 <td>6</td>
 <td>15.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>4</td>
 <td>5</td>
 <td>6</td>
 <td>20.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>5</td>
 <td>5</td>
 <td>6</td>
@@ -3600,12 +3418,12 @@ The selection from the data frame:</code></pre>
 <h3 class="anchored" data-anchor-id="renombrar-columnas">Renombrar columnas</h3>
 <p>Hay tres formas sencillas de renombrar columnas, según el contexto. La primera es usar la función específica <code>rename()</code> con un objeto llamado diccionario. Los diccionarios en Python constan de llaves con pares de valores separados por comas, donde el primer valor se asigna al segundo. Un ejemplo de diccionario sería <code>{'old_col1': 'new_col1', 'old_col2': 'new_col2'}</code>. Veámoslo en la práctica (pero ten en cuenta que no estamos ‘guardando’ el dataframe resultante, solo mostrándolo; para guardarlo, tendrías que añadir <code>df =</code> al lado izquierdo del código de abajo).</p>
 <div id="5e5c0dd0" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.rename(columns<span class="op">=</span>{<span class="st">"col3"</span>: <span class="st">"letters"</span>, <span class="st">"col4"</span>: <span class="st">"names"</span>, <span class="st">"col6"</span>: <span class="st">"fruit"</span>})</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.rename(columns<span class="op">=</span>{<span class="st">"col3"</span>: <span class="st">"letters"</span>, <span class="st">"col4"</span>: <span class="st">"names"</span>, <span class="st">"col6"</span>: <span class="st">"fruit"</span>})</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3624,7 +3442,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -3638,7 +3456,7 @@ The selection from the data frame:</code></pre>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -3652,7 +3470,7 @@ The selection from the data frame:</code></pre>
 <td>5.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -3666,7 +3484,7 @@ The selection from the data frame:</code></pre>
 <td>10.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -3680,7 +3498,7 @@ The selection from the data frame:</code></pre>
 <td>15.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -3694,7 +3512,7 @@ The selection from the data frame:</code></pre>
 <td>20.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -3715,13 +3533,13 @@ The selection from the data frame:</code></pre>
 </div>
 <p>El segundo método es para cuando quieres renombrar todas las columnas. Para ello, simplemente igualas <code>df.columns</code> al nuevo conjunto de columnas que quieras tener. Por ejemplo, podríamos querer poner en mayúscula la primera letra de cada columna usando <code>str.capitalize()</code> y asignarlo a <code>df.columns</code>.</p>
 <div id="482d301f" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.capitalize()</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.capitalize()</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3740,7 +3558,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -3754,7 +3572,7 @@ The selection from the data frame:</code></pre>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -3768,7 +3586,7 @@ The selection from the data frame:</code></pre>
 <td>5.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -3782,7 +3600,7 @@ The selection from the data frame:</code></pre>
 <td>10.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -3796,7 +3614,7 @@ The selection from the data frame:</code></pre>
 <td>15.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -3810,7 +3628,7 @@ The selection from the data frame:</code></pre>
 <td>20.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -3831,7 +3649,7 @@ The selection from the data frame:</code></pre>
 </div>
 <p>Por último, puede que solo nos interese reemplazar partes concretas de los nombres de columna. En este caso, podemos usar <code>.str.replace()</code>. Como ejemplo, añadamos la palabra <code>"Original"</code> delante de las columnas originales:</p>
 <div id="3dd7606b" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.columns.<span class="bu">str</span>.replace(<span class="st">"Col"</span>, <span class="st">"Original_column"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.columns.<span class="bu">str</span>.replace(<span class="st">"Col"</span>, <span class="st">"Original_column"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Index(['Original_column0', 'Original_column1', 'Original_column2',
        'Original_column3', 'Original_column4', 'Original_column5',
@@ -3847,18 +3665,18 @@ The selection from the data frame:</code></pre>
 <p>La forma más sencilla de reordenar (todas) las columnas es crear una nueva lista con sus nombres en el orden que quieras: ¡pero ten cuidado de no olvidar ninguna columna que quieras conservar!</p>
 <p>Veamos un ejemplo con una versión nueva de los datos ficticios de antes. Pondremos primero todas las columnas impares, en orden descendente, y luego las pares de la misma forma.</p>
 <div id="b7c0d519" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>np.reshape(<span class="bu">range</span>(<span class="dv">36</span>), (<span class="dv">6</span>, <span class="dv">6</span>)),</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>],</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"col"</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)],</span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    dtype<span class="op">=</span><span class="bu">float</span>,</span>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3872,7 +3690,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -3881,7 +3699,7 @@ The selection from the data frame:</code></pre>
 <td>5.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -3890,7 +3708,7 @@ The selection from the data frame:</code></pre>
 <td>11.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -3899,7 +3717,7 @@ The selection from the data frame:</code></pre>
 <td>17.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -3908,7 +3726,7 @@ The selection from the data frame:</code></pre>
 <td>23.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -3917,7 +3735,7 @@ The selection from the data frame:</code></pre>
 <td>29.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -3932,13 +3750,13 @@ The selection from the data frame:</code></pre>
 </div>
 </div>
 <div id="b9a409ac" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">"col5"</span>, <span class="st">"col3"</span>, <span class="st">"col1"</span>, <span class="st">"col4"</span>, <span class="st">"col2"</span>, <span class="st">"col0"</span>]]</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">"col5"</span>, <span class="st">"col3"</span>, <span class="st">"col1"</span>, <span class="st">"col4"</span>, <span class="st">"col2"</span>, <span class="st">"col0"</span>]]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3952,7 +3770,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>5.0</td>
 <td>3.0</td>
 <td>1.0</td>
@@ -3961,7 +3779,7 @@ The selection from the data frame:</code></pre>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>11.0</td>
 <td>9.0</td>
 <td>7.0</td>
@@ -3970,7 +3788,7 @@ The selection from the data frame:</code></pre>
 <td>6.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>17.0</td>
 <td>15.0</td>
 <td>13.0</td>
@@ -3979,7 +3797,7 @@ The selection from the data frame:</code></pre>
 <td>12.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>23.0</td>
 <td>21.0</td>
 <td>19.0</td>
@@ -3988,7 +3806,7 @@ The selection from the data frame:</code></pre>
 <td>18.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>29.0</td>
 <td>27.0</td>
 <td>25.0</td>
@@ -3997,7 +3815,7 @@ The selection from the data frame:</code></pre>
 <td>24.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>35.0</td>
 <td>33.0</td>
 <td>31.0</td>
@@ -4013,12 +3831,12 @@ The selection from the data frame:</code></pre>
 </div>
 <p>¡Por supuesto, esto es bastante tedioso si tienes muchas columnas! Hay métodos que pueden facilitarlo según tu contexto. ¿Quizá solo quieras ordenar las columnas? Esto se consigue combinando <code>sorted()</code> y el comando <code>reindex()</code> (que funciona para filas o columnas) con <code>axis=1</code>, que indica el segundo eje (es decir, las columnas).</p>
 <div id="e7ab5f64" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df.reindex(<span class="bu">sorted</span>(df.columns), axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df.reindex(<span class="bu">sorted</span>(df.columns), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4032,7 +3850,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">a</th>
+<td data-quarto-table-cell-role="th">a</td>
 <td>0.0</td>
 <td>1.0</td>
 <td>2.0</td>
@@ -4041,7 +3859,7 @@ The selection from the data frame:</code></pre>
 <td>5.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">b</th>
+<td data-quarto-table-cell-role="th">b</td>
 <td>6.0</td>
 <td>7.0</td>
 <td>8.0</td>
@@ -4050,7 +3868,7 @@ The selection from the data frame:</code></pre>
 <td>11.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">c</th>
+<td data-quarto-table-cell-role="th">c</td>
 <td>12.0</td>
 <td>13.0</td>
 <td>14.0</td>
@@ -4059,7 +3877,7 @@ The selection from the data frame:</code></pre>
 <td>17.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">d</th>
+<td data-quarto-table-cell-role="th">d</td>
 <td>18.0</td>
 <td>19.0</td>
 <td>20.0</td>
@@ -4068,7 +3886,7 @@ The selection from the data frame:</code></pre>
 <td>23.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">e</th>
+<td data-quarto-table-cell-role="th">e</td>
 <td>24.0</td>
 <td>25.0</td>
 <td>26.0</td>
@@ -4077,7 +3895,7 @@ The selection from the data frame:</code></pre>
 <td>29.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">f</th>
+<td data-quarto-table-cell-role="th">f</td>
 <td>30.0</td>
 <td>31.0</td>
 <td>32.0</td>
@@ -4123,7 +3941,7 @@ The selection from the data frame:</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Tip
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4139,9 +3957,9 @@ The selection from the data frame:</code></pre>
 <li><p>Piensa en tantas formas como sea posible de seleccionar <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code> y <code>arr_delay</code> de <code>flights</code>.</p></li>
 <li><p>¿Qué ocurre si incluyes el nombre de una fila o columna varias veces al intentar seleccionarlas?</p></li>
 <li><p>¿Qué hace la función <code>.isin()</code> en el siguiente código?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>flights.columns.isin([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_delay"</span>, <span class="st">"arr_delay"</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>flights.columns.isin([<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_delay"</span>, <span class="st">"arr_delay"</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>¿Te sorprende el resultado de ejecutar el siguiente código? ¿Cómo tratan por defecto las mayúsculas y minúsculas funciones como <code>str.contains</code>? ¿Cómo puedes cambiar ese comportamiento por defecto?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>flights.loc[:, flights.columns.<span class="bu">str</span>.contains(<span class="st">"TIME"</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>flights.loc[:, flights.columns.<span class="bu">str</span>.contains(<span class="st">"TIME"</span>)]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(Pista: puedes usar la ayuda incluso con funciones que se aplican a dataframes, por ejemplo, usa <code>help(flights.columns.str.contains)</code>)</p></li>
 </ol>
 </section>
@@ -4156,69 +3974,69 @@ The selection from the data frame:</code></pre>
 <p>Veamos cómo crear un grupo con la función <code>.groupby()</code>, seguida de la selección de una columna y la aplicación de una estadística de resumen mediante una agregación. Observa que la <em>agregación</em>, mediante <code>.agg()</code>, siempre produce un nuevo índice porque hemos condensado la información al nivel de grupo (y el nuevo índice está formado por esos niveles).</p>
 <p>El punto clave que debes recordar es: usa <code>.agg()</code> con <code>.groupby()</code> cuando quieras que tus grupos se conviertan en el nuevo índice.</p>
 <div id="62e540c0" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"month"</span>)[[<span class="st">"dep_delay"</span>]].mean())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"month"</span>)[[<span class="st">"dep_delay"</span>]].mean())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">dep_delay</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>10.036665</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>10.816843</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>13.227076</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>13.938038</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>12.986859</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>20.846332</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>21.727787</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>12.611040</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>6.722476</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>6.243988</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>5.435362</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>16.576688</td>
 </tr>
 </tbody>
@@ -4230,69 +4048,69 @@ The selection from the data frame:</code></pre>
 <p>Esto representa ahora el retraso medio de salida por mes. ¡Observa que nuestro índice ha cambiado! Ahora tenemos el mes donde originalmente teníamos un índice que era solo el número de fila. El índice desempeña un papel importante en las operaciones de agrupación porque lleva el registro de los grupos que tienes en el resto de tu dataframe.</p>
 <p>A menudo querrás hacer varias operaciones de resumen de una sola vez. La sintaxis más completa para esto es mediante <code>.agg()</code>. Podemos reproducir lo que hicimos antes usando <code>.agg()</code>:</p>
 <div id="aaaca266" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"month"</span>)[[<span class="st">"dep_delay"</span>]].agg(<span class="st">"mean"</span>))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(flights.groupby(<span class="st">"month"</span>)[[<span class="st">"dep_delay"</span>]].agg(<span class="st">"mean"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">dep_delay</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>10.036665</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>10.816843</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>13.227076</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>13.938038</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>12.986859</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>20.846332</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>21.727787</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>12.611040</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>6.722476</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>6.243988</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>5.435362</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>16.576688</td>
 </tr>
 </tbody>
@@ -4350,24 +4168,24 @@ The selection from the data frame:</code></pre>
 </table>
 <p>Para hacer varias agregaciones sobre varias columnas con nuevos nombres para las variables de salida, la sintaxis queda así</p>
 <div id="af588177" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    flights.groupby([<span class="st">"month"</span>]).agg(</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        mean_delay<span class="op">=</span>(<span class="st">"dep_delay"</span>, <span class="st">"mean"</span>),</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        count_flights<span class="op">=</span>(<span class="st">"dep_delay"</span>, <span class="st">"count"</span>),</span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">mean_delay</th>
 <th data-quarto-table-cell-role="th">count_flights</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -4375,62 +4193,62 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>10.036665</td>
 <td>26483</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>10.816843</td>
 <td>23690</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>13.227076</td>
 <td>27973</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>13.938038</td>
 <td>27662</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>12.986859</td>
 <td>28233</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>20.846332</td>
 <td>27234</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>21.727787</td>
 <td>28485</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>12.611040</td>
 <td>28841</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>6.722476</td>
 <td>27122</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>6.243988</td>
 <td>28653</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>5.435362</td>
 <td>27035</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>16.576688</td>
 <td>27110</td>
 </tr>
@@ -4446,16 +4264,16 @@ The selection from the data frame:</code></pre>
 <h3 class="anchored" data-anchor-id="agrupar-por-varias-variables">Agrupar por varias variables</h3>
 <p>Esto es tan sencillo como pasarle a <code>.groupby()</code> una lista que represente varias columnas en lugar de un string que represente una sola columna.</p>
 <div id="b0e56ff1" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>month_year_delay <span class="op">=</span> flights.groupby([<span class="st">"month"</span>, <span class="st">"year"</span>]).agg(</span>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>month_year_delay <span class="op">=</span> flights.groupby([<span class="st">"month"</span>, <span class="st">"year"</span>]).agg(</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    mean_delay<span class="op">=</span>(<span class="st">"dep_delay"</span>, <span class="st">"mean"</span>),</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    count_flights<span class="op">=</span>(<span class="st">"dep_delay"</span>, <span class="st">"count"</span>),</span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>month_year_delay</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>month_year_delay</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4463,7 +4281,7 @@ The selection from the data frame:</code></pre>
 <th data-quarto-table-cell-role="th">mean_delay</th>
 <th data-quarto-table-cell-role="th">count_flights</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th">year</th>
 <th data-quarto-table-cell-role="th"></th>
@@ -4472,74 +4290,74 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">1</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>10.036665</td>
 <td>26483</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">2</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>10.816843</td>
 <td>23690</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">3</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>13.227076</td>
 <td>27973</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">4</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>13.938038</td>
 <td>27662</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">5</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>12.986859</td>
 <td>28233</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">6</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">6</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>20.846332</td>
 <td>27234</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">7</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>21.727787</td>
 <td>28485</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">8</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">8</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>12.611040</td>
 <td>28841</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">9</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">9</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>6.722476</td>
 <td>27122</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">10</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">10</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>6.243988</td>
 <td>28653</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">11</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">11</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>5.435362</td>
 <td>27035</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">12</th>
-<th data-quarto-table-cell-role="th">2013</th>
+<td data-quarto-table-cell-role="th">12</td>
+<td data-quarto-table-cell-role="th">2013</td>
 <td>16.576688</td>
 <td>27110</td>
 </tr>
@@ -4552,12 +4370,12 @@ The selection from the data frame:</code></pre>
 <p>Quizá hayas notado que esta vez tenemos un multi-índice (es decir, un índice con más de una columna). Eso se debe a que pedimos algo con varios grupos, y el índice registra lo que ocurre dentro de cada grupo: por eso necesitamos más de una dimensión de índice para hacerlo de forma eficiente.</p>
 <p>Si alguna vez quieres volver a un índice que sea solo la posición, prueba <code>reset_index()</code></p>
 <div id="33712dc2" class="cell" data-execution_count="41">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>month_year_delay.reset_index()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>month_year_delay.reset_index()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4569,84 +4387,84 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>1</td>
 <td>2013</td>
 <td>10.036665</td>
 <td>26483</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2</td>
 <td>2013</td>
 <td>10.816843</td>
 <td>23690</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>3</td>
 <td>2013</td>
 <td>13.227076</td>
 <td>27973</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>4</td>
 <td>2013</td>
 <td>13.938038</td>
 <td>27662</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>5</td>
 <td>2013</td>
 <td>12.986859</td>
 <td>28233</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>6</td>
 <td>2013</td>
 <td>20.846332</td>
 <td>27234</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>7</td>
 <td>2013</td>
 <td>21.727787</td>
 <td>28485</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>8</td>
 <td>2013</td>
 <td>12.611040</td>
 <td>28841</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>9</td>
 <td>2013</td>
 <td>6.722476</td>
 <td>27122</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>10</td>
 <td>2013</td>
 <td>6.243988</td>
 <td>28653</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>11</td>
 <td>2013</td>
 <td>5.435362</td>
 <td>27035</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>12</td>
 <td>2013</td>
 <td>16.576688</td>
@@ -4660,12 +4478,12 @@ The selection from the data frame:</code></pre>
 </div>
 <p>Aunque quizá solo quieras eliminar un nivel del índice. Esto se consigue pasando la posición del índice que quieres eliminar: por ejemplo, para convertir solo el índice del año en una columna, usaríamos:</p>
 <div id="bcbef8f7" class="cell" data-execution_count="42">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>month_year_delay.reset_index(<span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>month_year_delay.reset_index(<span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4673,7 +4491,7 @@ The selection from the data frame:</code></pre>
 <th data-quarto-table-cell-role="th">mean_delay</th>
 <th data-quarto-table-cell-role="th">count_flights</th>
 </tr>
-<tr class="even">
+<tr class="odd">
 <th data-quarto-table-cell-role="th">month</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -4682,73 +4500,73 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>10.036665</td>
 <td>26483</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>10.816843</td>
 <td>23690</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>13.227076</td>
 <td>27973</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>13.938038</td>
 <td>27662</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>2013</td>
 <td>12.986859</td>
 <td>28233</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>2013</td>
 <td>20.846332</td>
 <td>27234</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>2013</td>
 <td>21.727787</td>
 <td>28485</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>2013</td>
 <td>12.611040</td>
 <td>28841</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>2013</td>
 <td>6.722476</td>
 <td>27122</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>2013</td>
 <td>6.243988</td>
 <td>28653</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>2013</td>
 <td>5.435362</td>
 <td>27035</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>2013</td>
 <td>16.576688</td>
 <td>27110</td>
@@ -4767,16 +4585,16 @@ The selection from the data frame:</code></pre>
 <p>El punto clave que debes recordar es: usa <code>.transform()</code> con <code>.groupby()</code> cuando quieras realizar cálculos sobre tus grupos pero quieras volver al índice original.</p>
 <p>Supongamos que queremos expresar el retraso de llegada, <code>"arr_del"</code>, de cada vuelo como una fracción del peor retraso de llegada de cada mes.</p>
 <div id="f96fcf41" class="cell" data-execution_count="43">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"max_delay_month"</span>] <span class="op">=</span> flights.groupby(<span class="st">"month"</span>)[<span class="st">"arr_delay"</span>].transform(<span class="st">"max"</span>)</span>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"max_delay_month"</span>] <span class="op">=</span> flights.groupby(<span class="st">"month"</span>)[<span class="st">"arr_delay"</span>].transform(<span class="st">"max"</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">"delay_frac_of_max"</span>] <span class="op">=</span> flights[<span class="st">"arr_delay"</span>] <span class="op">/</span> flights[<span class="st">"max_delay_month"</span>]</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>flights[</span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"arr_delay"</span>, <span class="st">"max_delay_month"</span>, <span class="st">"delay_frac_of_max"</span>]</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>].head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>].head()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4790,7 +4608,7 @@ The selection from the data frame:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -4799,7 +4617,7 @@ The selection from the data frame:</code></pre>
 <td>0.008648</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -4808,7 +4626,7 @@ The selection from the data frame:</code></pre>
 <td>0.015723</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -4817,7 +4635,7 @@ The selection from the data frame:</code></pre>
 <td>0.025943</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -4826,7 +4644,7 @@ The selection from the data frame:</code></pre>
 <td>-0.014151</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>2013</td>
 <td>1</td>
 <td>1</td>
@@ -4856,256 +4674,383 @@ The selection from the data frame:</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
         }
       }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
       return false;
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -5113,161 +5058,185 @@ The selection from the data frame:</code></pre>
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./workflow-basics.html" class="pagination-link" aria-label="Flujo de trabajo: conceptos básicos">
@@ -5285,4 +5254,4 @@ The selection from the data frame:</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/data-transform.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/data-transform.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

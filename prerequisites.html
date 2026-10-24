@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Requisitos previos – Python for Data Science</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -40,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,20 +67,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./whole-game.html" rel="next">
 <link href="./introduction.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b8d228dfc8ea33805744e1debdbf65c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b9e8d9863b7928896e96ff6494065671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No se han encontrado resultados",
+    "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
     "search-copy-link-title": "Copiar el enlace en la búsqueda",
     "search-hide-matches-text": "Ocultar resultados adicionales",
@@ -115,15 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LXJC37BJVX"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 
 
@@ -132,169 +113,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
-    const toggleBodyColorMode = (bsSheetEl) => {
-      const mode = bsSheetEl.getAttribute("data-mode");
-      const bodyEl = window.document.querySelector("body");
-      if (mode === "dark") {
-        bodyEl.classList.add("quarto-dark");
-        bodyEl.classList.remove("quarto-light");
-      } else {
-        bodyEl.classList.add("quarto-light");
-        bodyEl.classList.remove("quarto-dark");
-      }
-    }
-    const toggleBodyColorPrimary = () => {
-      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
-      if (bsSheetEl) {
-        toggleBodyColorMode(bsSheetEl);
-      }
-    }
-    const setColorSchemeToggle = (alternate) => {
-      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-      for (let i=0; i < toggles.length; i++) {
-        const toggle = toggles[i];
-        if (toggle) {
-          if (alternate) {
-            toggle.classList.add("alternate");
-          } else {
-            toggle.classList.remove("alternate");
-          }
-        }
-      }
-    };
-    const toggleColorMode = (alternate) => {
-      // Switch the stylesheets
-      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
-      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-      manageTransitions('#quarto-margin-sidebar .nav-link', false);
-      if (alternate) {
-        // note: dark is layered on light, we don't disable primary!
-        enableStylesheet(alternateStylesheets);
-        for (const sheetNode of alternateStylesheets) {
-          if (sheetNode.id === "quarto-bootstrap") {
-            toggleBodyColorMode(sheetNode);
-          }
-        }
-      } else {
-        disableStylesheet(alternateStylesheets);
-        enableStylesheet(primaryStylesheets)
-        toggleBodyColorPrimary();
-      }
-      manageTransitions('#quarto-margin-sidebar .nav-link', true);
-      // Switch the toggles
-      setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
-      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-        manageTransitions("body", false);
-        window.scrollTo(0, 1);
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          manageTransitions("body", true);
-        }, 40);
-      }
-    }
-    const disableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        stylesheet.rel = 'disabled-stylesheet';
-      }
-    }
-    const enableStylesheet = (stylesheets) => {
-      for (let i=0; i < stylesheets.length; i++) {
-        const stylesheet = stylesheets[i];
-        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
-          stylesheet.rel = 'stylesheet';
-        }
-      }
-    }
-    const manageTransitions = (selector, allowTransitions) => {
-      const els = window.document.querySelectorAll(selector);
-      for (let i=0; i < els.length; i++) {
-        const el = els[i];
-        if (allowTransitions) {
-          el.classList.remove('notransition');
-        } else {
-          el.classList.add('notransition');
-        }
-      }
-    }
-    const isFileUrl = () => {
-      return window.location.protocol === 'file:';
-    }
-    const hasAlternateSentinel = () => {
-      let styleSentinel = getColorSchemeSentinel();
-      if (styleSentinel !== null) {
-        return styleSentinel === "alternate";
-      } else {
-        return false;
-      }
-    }
-    const setStyleSentinel = (alternate) => {
-      const value = alternate ? "alternate" : "default";
-      if (!isFileUrl()) {
-        window.localStorage.setItem("quarto-color-scheme", value);
-      } else {
-        localAlternateSentinel = value;
-      }
-    }
-    const getColorSchemeSentinel = () => {
-      if (!isFileUrl()) {
-        const storageValue = window.localStorage.getItem("quarto-color-scheme");
-        return storageValue != null ? storageValue : localAlternateSentinel;
-      } else {
-        return localAlternateSentinel;
-      }
-    }
-    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-      let newTheme = '';
-      if(authorPrefersDark) {
-        newTheme = isAlternate ? baseTheme : alternateTheme;
-      } else {
-        newTheme = isAlternate ? alternateTheme : baseTheme;
-      }
-      const changeGiscusTheme = () => {
-        // From: https://github.com/giscus/giscus/issues/336
-        const sendMessage = (message) => {
-          const iframe = document.querySelector('iframe.giscus-frame');
-          if (!iframe) return;
-          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-        sendMessage({
-          setConfig: {
-            theme: newTheme
-          }
-        });
-      }
-      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-      if (isGiscussLoaded) {
-        changeGiscusTheme();
-      }
-    };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-    // Dark / light mode switch
-    window.quartoToggleColorScheme = () => {
-      // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
-      toggleColorMode(toAlternate);
-      setStyleSentinel(toAlternate);
-      toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
-    };
-    // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
-      toggleColorMode(true);
-    } else {
-      toggleColorMode(false);
-    }
-  </script>
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -320,7 +139,7 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Python for Data Science</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/aeturrell/python4DS" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jromeroa94/python4DS-es" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -628,11 +447,10 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#formas-alternativas-de-ejecutar-el-código-del-libro" id="toc-formas-alternativas-de-ejecutar-el-código-del-libro" class="nav-link" data-scroll-target="#formas-alternativas-de-ejecutar-el-código-del-libro">Formas alternativas de ejecutar el código del libro</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/prerequisites.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/prerequisites.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction.html">Introducción</a></li><li class="breadcrumb-item"><a href="./prerequisites.html"><span class="chapter-title">Requisitos previos</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -710,13 +528,13 @@ gtag('config', 'G-LXJC37BJVX', { 'anonymize_ip': true});
 <section id="instalar-python-1" class="level3">
 <h3 class="anchored" data-anchor-id="instalar-python-1">Instalar Python</h3>
 <p>Para descargar e instalar Python, usaremos la “distribución” uv de Python, que está disponible en todos los sistemas operativos principales. Para instalarla, sigue las instrucciones de <a href="https://docs.astral.sh/uv/getting-started/installation/#installation-methods">este sitio web</a>. A diferencia de la instalación de programas normales, vamos a usar la <em>línea de comandos</em> para instalar Python. Linux, Mac y Windows tienen líneas de comandos integradas: busca <em>Terminal</em> en Mac o Linux, y <em>Powershell</em> en Windows. Estas aplicaciones abrirán ventanas en las que puedes escribir comandos. En el momento de escribir esto, los comandos son:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>para Linux y Mac, y</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>ExecutionPolicy ByPass <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>ExecutionPolicy ByPass <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>para Windows. Pulsa Enter para ejecutar los comandos.</p>
 <p>Una vez que hayas instalado uv, puedes comprobar que se instaló correctamente ejecutando <code>uv --version</code>. Deberías ver un mensaje que dice “uv” seguido del número de la versión más reciente.</p>
 <p>En realidad todavía no hemos descargado Python: descargamos <strong>uv</strong>, que se encargará de gestionar nuestro entorno de Python. Así que a continuación tenemos que ejecutar</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="instalar-tu-entorno-de-desarrollo-integrado-visual-studio-code" class="level3">
 <h3 class="anchored" data-anchor-id="instalar-tu-entorno-de-desarrollo-integrado-visual-studio-code">Instalar tu entorno de desarrollo integrado, Visual Studio Code</h3>
@@ -784,12 +602,12 @@ Nota
 <p>Ahora abre una terminal <em>dentro</em> de Visual Studio Code. Asegúrate de que sea el mismo tipo de terminal en el que instalaste uv, por ejemplo, usa Powershell en Windows (puedes elegir distintos tipos de terminal). El atajo para abrir el panel de la terminal es Ctrl + ` en Linux y Windows, y Cmd + ` en Mac. El panel de la terminal aparece en la parte inferior de VS Code. Ejecuta <code>uv init</code> en la terminal para iniciar una instalación de Python. <strong>Esta instalación de Python solo existe en tu carpeta actual</strong>. Después, para instalar el paquete que necesitamos en esta sección, ejecuta <code>uv add jupyter</code>. (Veremos la terminal y la instalación de paquetes con mucho más detalle en breve).</p>
 <p>Ahora, con el panel del explorador todavía abierto a la izquierda, haz clic en el símbolo que parece una hoja en blanco con un signo “+”. Esto creará un archivo nuevo y el cursor se moverá para que le pongas nombre. Llámalo <code>hello_world.py</code>. La extensión del archivo, <code>.py</code>, es muy importante, ya que le indica implícitamente a Visual Studio Code que se trata de un script de Python.</p>
 <p>En el editor de Visual Studio Code, añade una sola línea al archivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Hello World!'</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Hello World!'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Guarda el archivo.</p>
 <p>Si le pusiste la extensión <code>.py</code> al archivo, VS Code reconocerá que es código Python y deberías ver aparecer el nombre y la versión de Python en la barra de la parte inferior de la ventana de VS Code. (Puedes tener varias versiones de Python instaladas; si alguna vez quieres cambiar la versión de Python que usa tu código, haz clic en la versión que aparece en la barra y selecciona la que quieras).</p>
 <p>Bien, ¿vamos a <strong>ejecutar código</strong> de verdad? Selecciona/resalta el texto <code>print("Hello world!")</code> que escribiste en el archivo y haz clic derecho. Verás muchas opciones, pero la que quieres es <strong>“Run Selection/Line in Interactive Window”</strong>.</p>
 <p>Esto debería hacer que aparezca un nuevo panel ‘interactivo’ en Visual Studio Code y, como por arte de magia, deberías ver:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello world!"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello world!"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="text"><code>Hello world!</code></pre>
 <p>La <em>ventana interactiva</em> es una forma cómoda y flexible de ejecutar el código que tienes abierto en un script o que escribes directamente en su cuadro de código. La ventana interactiva ‘recordará’ cualquier variable que se haya asignado (por ejemplo, instrucciones como <code>x = 5</code>), tanto si proviene de ejecutar algunas líneas del script como si la escribiste directamente. Trabajar con la ventana interactiva te resultará familiar si has usado Stata, Matlab o R. No necesitas escribir el script entero de principio a fin por adelantado. En su lugar, puedes improvisar, cambiando el código sobre la marcha y (re)ejecutándolo línea a línea.</p>
 <p>Sería engorroso tener que hacer clic derecho cada vez que quisiéramos ejecutar código, así que vamos a crear un <em>atajo de teclado</em> para enviar el código resaltado a la ventana interactiva y ejecutarlo. Para ello:</p>
@@ -806,7 +624,7 @@ Nota
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Ejecutar el código en la terminal en su lugar
+Ejecutar el código en la terminal en su lugar
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -822,7 +640,7 @@ Nota
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Inicia las ventanas interactivas y las terminales dentro del directorio de tu proyecto
+Inicia las ventanas interactivas y las terminales dentro del directorio de tu proyecto
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -835,7 +653,7 @@ Nota
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Ejercicio
+Ejercicio
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -847,7 +665,7 @@ Nota
 <h3 class="anchored" data-anchor-id="instalar-paquetes">Instalar paquetes</h3>
 <p>Usamos la <em>terminal</em> o <em>línea de comandos</em> de Visual Studio Code para instalar paquetes adicionales de Python. En la figura mostrada antes en el capítulo, es el panel número 4.</p>
 <p>Para instalar paquetes en el entorno de Python de la carpeta que usas en Visual Studio Code, escribe lo siguiente en la terminal de Visual Studio Code (el mismo lugar donde acabas de ejecutar <code>uv run python --version</code>).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add packagename</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add packagename</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>y pulsa Enter. En lo anterior, <code>packagename</code> podría ser <code>pandas</code>, por ejemplo. Si tienes problemas al instalar, asegúrate de estar conectado a internet y de que <a href="https://pypi.org/">PyPI</a> (el índice de paquetes de Python) no esté bloqueado por tu firewall o proxy. Podrías probar a instalar así el paquete de análisis de datos <strong>polars</strong>, ejecutando <code>uv add polars</code>. Veremos cómo usar <strong>polars</strong> en capítulos posteriores, pero si quieres saber si se instaló correctamente, busca el mensaje “Successfully installed polars” seguido del número de versión.</p>
 <p>Puedes ver qué paquetes has instalado previamente escribiendo <code>uv pip list</code> en la línea de comandos.</p>
 <p>Veremos más sobre la instalación y el uso de paquetes en <a href="workflow-packages-and-environments.html" class="quarto-xref"><span>Flujo de trabajo: paquetes y entornos</span></a>.</p>
@@ -863,261 +681,387 @@ Nota
 </ol>
 
 
-<p>{ “cells”: [ { “cell_type”: “markdown”, “id”: “95f0a171”, “metadata”: {}, “source”: [ “# Funciones {#sec-functions}”, “”, “## Introducción”, “”, “Una de las mejores formas de ampliar tu alcance como científico de datos es escribir funciones.”, “Las funciones te permiten automatizar tareas comunes de una manera más potente y general que copiar y pegar.”, “Escribir una función tiene tres grandes ventajas frente a copiar y pegar:”, “”, “1. Puedes darle a una función un nombre evocador que haga tu código más fácil de entender.”, “”, “2. Cuando cambian los requisitos, solo necesitas actualizar el código en un lugar, en vez de en muchos.”, “”, “3. Eliminas la posibilidad de cometer errores accidentales al copiar y pegar (por ejemplo, actualizar el nombre de una variable en un lugar, pero no en otro).”, “”, “Escribir buenas funciones es un viaje de toda la vida.”, “Incluso después de usar Python durante muchos años, todavía puedes aprender nuevas técnicas y mejores formas de abordar viejos problemas.”, “El objetivo de este capítulo no es enseñarte cada detalle esotérico de las funciones, sino ayudarte a empezar con algunos consejos pragmáticos que puedes aplicar de inmediato.”, “”, “Además de consejos prácticos para escribir funciones, este capítulo también te da algunas sugerencias sobre cómo dar estilo a tu código.”, “Un buen estilo de código es como una puntuación correcta.”, “Puedesarreglártelassinella, ¡pero sin duda hace que todo sea más fácil de leer!”, “Al igual que con los estilos de puntuación, hay muchas variaciones posibles.”, “Aquí presentamos el estilo que usamos en nuestro código, pero lo más importante es ser coherente.”, “”, “### Requisitos previos”, “”, “Necesitarás los paquetes <strong>pandas</strong> y <strong>numpy</strong> para este capítulo.” ] }, { “cell_type”: “markdown”, “id”: “a4b99b14”, “metadata”: {}, “source”: [ “## Funciones”, “”, “Una función tiene entradas, realiza su función y devuelve las salidas que tenga. Las funciones comienzan con la palabra clave def, de ‘definir una función’. Luego tienen un nombre, seguido de paréntesis, (), que pueden contener argumentos de la función y argumentos de palabra clave. A esto le siguen dos puntos. El cuerpo de la función se indenta con respecto al texto situado más a la izquierda. Los argumentos de la función se definen entre paréntesis después del nombre, con las distintas entradas separadas por comas. Las salidas se indican con la palabra clave return, de nuevo con las distintas variables separadas por comas.”, “”, “Veamos un ejemplo muy sencillo de una función con un único <em>argumento</em> (o arg):” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “0450ad6c”, “metadata”: {}, “outputs”: [], “source”: [ “def welcome_message(name):”, ” return f"Hello {name}, and welcome!"“,”“,”“,”# Without indentation, this code is not part of function“,”name = "Ada"“,”output_string = welcome_message(name)“,”print(output_string)” ] }, { “cell_type”: “markdown”, “id”: “08c06c6a”, “metadata”: {}, “source”: [ “Una característica potente de las funciones es que podemos definir valores por defecto para los argumentos de entrada. Estos se llaman <em>argumentos de palabra clave</em> (o kwargs). Veámoslo en acción definiendo un valor por defecto para <code>name</code>, junto con varias salidas: un mensaje de saludo y una puntuación.” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “dd49bee5”, “metadata”: {}, “outputs”: [], “source”: [ “def score_message(score, name="student"):”, ” """This is a doc-string, a string describing a function.“,” Args:“,” score (float): Raw score“,” name (str): Name of student“,” Returns:“,” str: A hello message.“,” float: A normalised score.“,” """“,” norm_score = (score - 50) / 10“,” return f"Hello {name}", norm_score“,”“,”“,”# Without indentation, this code is not part of function“,”name = "Ada"“,”score = 98“,”# No name entered“,”print(score_message(score))“,”# Name entered“,”print(score_message(score, name=name))” ] }, { “cell_type”: “markdown”, “id”: “5c4c6cdf”, “metadata”: {}, “source”: [ “::: {.callout-note title="Argumentos y argumentos con nombre (keyword arguments)"}”, “”, “Los <em>argumentos</em> son las variables que las funciones necesitan <em>siempre</em>, como <code>a</code> y <code>b</code> en <code>def add(a, b): return a + b</code>. ¡La función no funcionará sin ellos! A los argumentos de una función a veces se les llama <em>args</em>.”, “”, “Los <em>argumentos de palabra clave</em> son las variables opcionales de las funciones, como <code>c</code> en <code>def add(a, b, c=5): return a + b - c</code>. Si no proporcionas un valor para <code>c</code> al llamar a la función, se usará automáticamente <code>c=5</code>. A los argumentos de palabra clave a veces se les llama <em>kwargs</em>.”, “:::”, “”, “”, “::: {.callout-tip title="Ejercicio"}”, “¿Cuál es el tipo de retorno de una función con varios valores de retorno separados por comas después de la instrucción <code>return</code>?”, “:::”, “”, “En ese último ejemplo, habrás notado que añadimos algo de texto a la función. Es un docstring, o cadena de documentación. Sirve para ayudar a los usuarios (y, muy probablemente, a tu yo del futuro) a entender qué hace la función. Veamos cómo funciona llamando a <code>help()</code> sobre la función <code>score_message</code>:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “50dfff24”, “metadata”: {}, “outputs”: [], “source”: [ “help(score_message)” ] }, { “cell_type”: “markdown”, “id”: “6e466fcd”, “metadata”: {}, “source”: [ “::: {.callout-tip title="Ejercicio"}”, “Escribe una función que devuelva un carácter unicode de "chócala" (high five) si la entrada es igual a "coding for economists" y, en caso contrario, una cara triste, ":-/".”, “”, “Añade un segundo argumento que tome por defecto un string vacío pero que, si se usa, se añada (concatene) al mensaje devuelto. Úsalo para crear la salida ":-/ here is my message."”, “”, “Escribe un docstring para tu función y llama a <code>help</code> sobre ella.”, “:::”, “”, “Para aprender más sobre args y kwargs, consulta estos <a href="https://calmcode.io/args-kwargs/introduction.html">breves videotutoriales</a>.” ] }, { “cell_type”: “markdown”, “id”: “58c754c0”, “metadata”: {}, “source”: [ “## ¿Cuándo deberías escribir una función?”, “”, “Deberías considerar escribir una función siempre que hayas copiado y pegado un bloque de código más de dos veces (es decir, ya tienes tres copias del mismo código).”, “Por ejemplo, echa un vistazo a este código.”, “¿Qué hace?” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “7a744085”, “metadata”: {}, “outputs”: [], “source”: [ “import numpy as np”, “import pandas as pd”, “”, “df = pd.DataFrame(np.random.normal(size=(10, 4)), columns=["a", "b", "c", "d"])”, “”, “df["a"] = (df["a"] - df["a"].min()) / (df["a"].max() - df["a"].min())”, “df["b"] = (df["b"] - df["b"].min()) / (df["b"].max() - df["a"].min())”, “df["c"] = (df["c"] - df["c"].min()) / (df["c"].max() - df["c"].min())”, “df["d"] = (df["d"] - df["d"].min()) / (df["d"].max() - df["d"].min())” ] }, { “cell_type”: “markdown”, “id”: “a5da40e0”, “metadata”: {}, “source”: [ “Quizá puedas deducir que reescala cada columna para que tenga un rango de 0 a 1.”, “Pero ¿viste el error? Hubo una equivocación al copiar y pegar el código para <code>df[\"b\"]</code>: alguien olvidó cambiar una <code>a</code> por una <code>b</code>.”, “Extraer el código repetido a una función es una buena idea porque evita que cometas este tipo de errores.”, “”, “Para escribir una función, primero necesitas analizar el código.”, “¿Cuántas entradas tiene?”, “”, “<code>python\n",     "df[\"a\"] - df[\"a\"].min() / (df[\"a\"].max() - df[\"a\"].min())\n",     "</code>”, “”, “Este código solo tiene una entrada: <code>df[\"a\"]</code>. Para que las entradas sean más claras, es buena idea reescribir el código usando variables temporales con nombres generales. Aquí el código solo requiere un único vector numérico, así que lo llamaremos <code>x</code> y lo pondremos en una función.”, “”, “Las funciones comienzan con la palabra clave def, de ‘definir una función’. Luego tienen un nombre, seguido de paréntesis, (), que pueden contener argumentos de la función y argumentos de palabra clave. A esto le siguen dos puntos. El cuerpo de la función se indenta con respecto al texto situado más a la izquierda. Los argumentos de la función se definen entre paréntesis después del nombre, con las distintas entradas separadas por comas. Las salidas se indican con la palabra clave return, de nuevo con las distintas variables separadas por comas.”, “”, “Así, en Python, las funciones tienen la forma:”, “”, “<code>python\n",     "def name_of_function(&lt;inputs&gt;):\n",     "    &lt;code to carry out on inputs&gt;\n",     "    &lt;return statement, if appropriate&gt;\n",     "</code>”, “”, “Así que aquí sería:” ] }, { “cell_type”: “markdown”, “id”: “a16d6dd0”, “metadata”: {}, “source”: [ “<code>python\n",     "def rescale(x):\n",     "    return (x - x.min()) / (x.max() - x.min())\n",     "</code>” ] }, { “cell_type”: “markdown”, “id”: “22f6afb7”, “metadata”: {}, “source”: [ “Todavía hay algo de duplicación en este código. Estamos calculando el mínimo de los datos dos veces, así que tiene sentido hacerlo una sola vez:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “406648b6”, “metadata”: {}, “outputs”: [], “source”: [ “def rescale(x):”, ” minimum = x.min()“,” return (x - minimum) / (x.max() - minimum)” ] }, { “cell_type”: “markdown”, “id”: “60609a8f”, “metadata”: {}, “source”: [ “Extraer los cálculos intermedios a variables con nombre es una buena práctica, porque deja más claro lo que hace el código.”, “”, “”, “Hay tres pasos clave para crear una nueva función:”, “”, “1. Debes elegir un <em>nombre</em> para la función. Aquí hemos usado <code>rescale</code> porque esta función reescala un vector para que quede entre 0 y 1.”, “”, “1. Enumeras las entradas, o <em>argumentos</em>, de la función dentro de <code>function</code>.”, ” Aquí solo tenemos un argumento.“,” Si tuviéramos más, la llamada se vería como <code>function(x, y, z)</code>. (También podríamos tener un <em>argumento de palabra clave</em> con nombre, como <code>data=</code>, después de los <em>argumentos</em>.)“,”“,”3. Colocas el código que has desarrollado en el <em>cuerpo</em> de la función, un bloque que sigue inmediatamente a <code>function(...):</code>.“,”“,”Fíjate en el proceso general: solo creamos la función después de haber averiguado cómo hacerla funcionar con una entrada sencilla. Es más fácil empezar con código que funciona y convertirlo en una función; es más difícil crear una función y luego intentar que funcione.“,”“,”En este punto, es buena idea comprobar tu función con algunas entradas diferentes:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “b72eafca”, “metadata”: {}, “outputs”: [], “source”: [ “rescale(pd.Series([-10, 0, 10]))” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “edd018c7”, “metadata”: {}, “outputs”: [], “source”: [ “rescale(pd.Series([1, 2, 3, np.nan, 5]))” ] }, { “cell_type”: “markdown”, “id”: “629f75d4”, “metadata”: {}, “source”: [ “A medida que escribas más y más funciones, con el tiempo querrás convertir estas pruebas informales e interactivas en pruebas formales y automatizadas.”, “Ese proceso se llama pruebas unitarias (unit testing). Por desgracia, queda fuera del alcance de este libro.”, “”, “Ahora que tenemos una función, podemos simplificar el ejemplo original:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “ce066e4f”, “metadata”: {}, “outputs”: [], “source”: [ “df["a"] = rescale(df["a"])”, “df["b"] = rescale(df["b"])”, “df["c"] = rescale(df["c"])”, “df["d"] = rescale(df["d"])” ] }, { “cell_type”: “markdown”, “id”: “cb41766f”, “metadata”: {}, “source”: [ “En comparación con el original, este código es más fácil de entender y hemos eliminado un tipo de errores de copiar y pegar. Todavía hay bastante duplicación, ya que hacemos lo mismo con varias columnas; en realidad también podemos eliminarla, pero veremos cómo hacerlo más adelante en el libro.”, “”, “Otra ventaja de las funciones es que, si nuestros requisitos cambian, solo necesitamos hacer el cambio en un lugar.”, “Por ejemplo, podríamos descubrir que algunas de nuestras variables incluyen valores infinitos y que <code>rescale()</code> (en la práctica) falla:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “f503c36b”, “metadata”: {}, “outputs”: [], “source”: [ “rescale(pd.Series([1, 2, 3, np.inf, 5]))” ] }, { “cell_type”: “markdown”, “id”: “f29a050e”, “metadata”: {}, “source”: [ “Como hemos extraído el código a una función, solo necesitamos hacer la corrección en un lugar:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “67c861b6”, “metadata”: {}, “outputs”: [], “source”: [ “def rescale(x):”, ” x = x.replace(np.inf, np.nan)“,” minimum = x.min()“,” return (x - minimum) / (x.max() - minimum)“,”“,”“,”rescale(pd.Series([1, 2, 3, np.inf, 5]))” ] }, { “cell_type”: “markdown”, “id”: “ee8598d3”, “metadata”: {}, “source”: [ “Esta es una parte importante del principio "no te repitas" (o DRY, por sus siglas en inglés).”, “Cuanta más repetición tengas en tu código, más lugares tendrás que recordar actualizar cuando las cosas cambien (¡y siempre cambian!), y más probable será que introduzcas errores con el tiempo.” ] }, { “cell_type”: “markdown”, “id”: “6e5df698”, “metadata”: {}, “source”: [ “## Las funciones son para humanos y para computadoras”, “”, “Es importante recordar que las funciones no son solo para la computadora, sino también para los humanos. En general, a Python no le importa cómo se llame tu función ni qué comentarios contenga, pero esto es importante para los lectores humanos. Esta sección trata algunas cosas que deberías tener en cuenta al escribir funciones que los humanos puedan entender.”, “”, “El nombre de una función es importante. Lo ideal es que el nombre de tu función sea corto, pero que evoque claramente lo que hace la función. ¡Eso es difícil! Pero es mejor ser claro que breve, ya que el autocompletado de Visual Studio Code facilita escribir nombres largos.”, “”, “En general, los nombres de las funciones deberían ser verbos, y los argumentos, sustantivos. Hay algunas excepciones: los sustantivos están bien si la función calcula un sustantivo muy conocido (por ejemplo, <code>mean</code> es mejor que <code>compute_mean</code>) o si accede a alguna propiedad de un objeto (por ejemplo, <code>coef</code> es mejor que <code>get_coefficients</code>). Una buena señal de que un sustantivo podría ser mejor opción es que estés usando un verbo muy amplio como "get", "compute", "calculate" o "determine".”, “Usa tu mejor criterio y no tengas miedo de renombrar una función si más adelante se te ocurre un nombre mejor.”, “”, “<code>python\n",     "# Not a verb, or descriptive\n",     "my_awesome_function()\n",     "# Long, but clear\n",     "impute_missing()\n",     "collapse_years()\n",     "</code>”, “”, “Si el nombre de tu función se compone de varias palabras, usa "snake_case", donde cada palabra en minúsculas se separa con un guion bajo. Si tienes una familia de funciones que hacen cosas similares, asegúrate de que tengan nombres y argumentos coherentes. Usa un prefijo común para indicar que están relacionadas. Eso es mejor que un sufijo común, porque el autocompletado te permite escribir el prefijo y ver todos los miembros de la familia.”, “”, “<code>python\n",     "# Good\n",     "input_select()\n",     "input_checkbox()\n",     "input_text()\n",     "# Not so good\n",     "select_input()\n",     "checkbox_input()\n",     "text_input()\n",     "</code>”, “”, “Un buen ejemplo de este diseño es el paquete <strong>pandas</strong>: si no recuerdas exactamente qué función necesitas para leer datos, puedes escribir <code>pd.read_</code> y refrescar la memoria mientras el autocompletado te muestra las opciones.” ] }, { “cell_type”: “markdown”, “id”: “6735f101”, “metadata”: {}, “source”: [ “## Ámbito de las funciones”, “”, “El ámbito (<em>scope</em>) se refiere a qué partes de tu código pueden ver qué otras partes. Hay tres ámbitos diferentes que debes tener en cuenta: local, global y no local.”, “”, “<strong>Local</strong>”, “”, “Si defines una variable dentro de una función, el resto de tu código no podrá ‘verla’ ni usarla. Por ejemplo, aquí tienes una función que crea una variable y, a continuación, un ejemplo de cómo llamar a esa variable:”, “”, “<code>python\n",     "def var_func():\n",     "    str_variable = 'Hello World!'\n",     "\n",     "var_func()\n",     "print(str_variable)\n",     "</code>”, “”, “Esto generaría un error porque, para el resto de tu código, <code>str_variable</code> no existe fuera de la función. Este es un ejemplo de una variable <em>local</em>, es decir, una que solo existe dentro de una función.”, “”, “”, “Si quieres crear variables dentro de una función y que persistan, tienes que devolverlas explícitamente usando, por ejemplo, <code>return str_variable</code>, así:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “8725b986”, “metadata”: {}, “outputs”: [], “source”: [ “def var_func():”, ” str_variable = "Hello World!"“,” return str_variable“,”“,”“,”returned_var = var_func()“,”print(returned_var)” ] }, { “cell_type”: “markdown”, “id”: “ddd6f63e”, “metadata”: {}, “source”: [ “<strong>Global</strong>”, “”, “Una variable declarada fuera de una función se conoce como variable global porque es accesible desde cualquier parte:” ] }, { “cell_type”: “code”, “execution_count”: null, “id”: “b0a4fe15”, “metadata”: {}, “outputs”: [], “source”: [ “y = "I’m a global variable"”, “”, “”, “def print_y():”, ” print("y is inside a function:", y)“,”“,”“,”print_y()“,”print("y is outside a function:", y)” ] } ], “metadata”: { “interpreter”: { “hash”: “9d7534ecd9fbc7d385378f8400cf4d6cb9c6175408a574f1c99c5269f08771cc” }, “jupytext”: { “cell_metadata_filter”: “-all”, “encoding”: “# -<em>- coding: utf-8 -</em>-”, “formats”: “md:myst”, “main_language”: “python” }, “kernelspec”: { “display_name”: “Python 3 (ipykernel)”, “language”: “python”, “name”: “python3” }, “language_info”: { “codemirror_mode”: { “name”: “ipython”, “version”: 3 }, “file_extension”: “.py”, “mimetype”: “text/x-python”, “name”: “python”, “nbconvert_exporter”: “python”, “pygments_lexer”: “ipython3”, “version”: “3.12.14” }, “toc-showtags”: true }, “nbformat”: 4, “nbformat_minor”: 5 }</p>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    // Ensure there is a toggle, if there isn't float one in the top right
-    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-      const i = window.document.createElement("i");
-      i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    setColorSchemeToggle(hasAlternateSentinel())
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
         }
       }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
       return false;
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiado");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiado");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1125,161 +1069,185 @@ Nota
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./introduction.html" class="pagination-link" aria-label="Primeros pasos">
@@ -1297,4 +1265,4 @@ Nota
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/aeturrell/python4DS/blob/main/prerequisites.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/aeturrell/python4DS/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/jromeroa94/python4DS-es/blob/main/prerequisites.ipynb" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jromeroa94/python4DS-es/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>
