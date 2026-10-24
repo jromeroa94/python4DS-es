@@ -1,174 +1,174 @@
-# The Command Line {#sec-command-line}
+# La línea de comandos {#sec-command-line}
 
-In this chapter, you'll meet the *command line* and learn how to use it. Beyond a few key commands like `uv add <packagename>` you don't strictly need to know how to use the command line to follow the rest of this book. However, even a tiny bit of knowledge of the command line goes a long way in coding and will serve you well.
+En este capítulo conocerás la *línea de comandos* y aprenderás a usarla. Aparte de unos pocos comandos clave como `uv add <packagename>`, no necesitas saber usar la línea de comandos para seguir el resto de este libro. Sin embargo, incluso un poquito de conocimiento de la línea de comandos rinde mucho al programar y te será muy útil.
 
-To try out any of the commands in this chapter on your machine, you can select 'New Terminal' from the menu bar in Visual Studio Code (Mac and Linux), use the Windows Subsystem for Linux or git bash (Windows), or use a free [online terminal](https://cocalc.com/doc/terminal.html).
+Para probar en tu máquina cualquiera de los comandos de este capítulo, puedes seleccionar 'New Terminal' en la barra de menús de Visual Studio Code (Mac y Linux), usar el Windows Subsystem for Linux o git bash (Windows), o usar una [terminal en línea](https://cocalc.com/doc/terminal.html) gratuita.
 
-This chapter has benefited from numerous sources, including absolutely excellent notes by [Grant McDermott](https://grantmcdermott.com/), Melanie Walsh's [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html), [Data Science Bootstrap](https://ericmjl.github.io/data-science-bootstrap-notes/), [calmcode.io](https://calmcode.io/), and [Research Software Engineering with Python](https://merely-useful.tech/py-rse/). A promising resource that, at the time of writing, was still being compiled is [Data Science at the Command Line](https://www.datascienceatthecommandline.com/2e/).
+Este capítulo se ha beneficiado de numerosas fuentes, incluidas las excelentes notas de [Grant McDermott](https://grantmcdermott.com/), [Introduction to Cultural Analytics & Python](https://melaniewalsh.github.io/Intro-Cultural-Analytics/welcome.html) de Melanie Walsh, [Data Science Bootstrap](https://ericmjl.github.io/data-science-bootstrap-notes/), [calmcode.io](https://calmcode.io/) y [Research Software Engineering with Python](https://merely-useful.tech/py-rse/). Un recurso prometedor que, en el momento de escribir esto, aún se estaba compilando es [Data Science at the Command Line](https://www.datascienceatthecommandline.com/2e/).
 
-## What is the command line?
+## ¿Qué es la línea de comandos?
 
-The command line is a way to directly issue text-based commands to a computer one line at a time (as distinct from a graphical user interface, or GUI, that you navigate with a mouse). It goes under many names: shell, bash, terminal, CLI, and command line. These are actually different things but most people tend to use them to mean the same thing most of the time. The *shell* is the part of an operating system that you interact with but mostly people use shell to mean the command line. *bash* is the programming language that is used in the command line; it's actually a synonym for 'Born Again SHell'. The *terminal* is sometimes used to refer to the command line on Macs. Finally, a *CLI* is just an acronym for command line interface, and is often used in the context of an application; for example, uv has a command line interface because you run it on the command line to install packages (`uv add packagename`).
+La línea de comandos es una forma de dar instrucciones de texto directamente a una computadora, una línea a la vez (a diferencia de una interfaz gráfica de usuario, o GUI, por la que navegas con el ratón). Recibe muchos nombres: shell, bash, terminal, CLI y línea de comandos. En realidad son cosas distintas, pero la mayoría de la gente suele usarlas como sinónimos casi siempre. El *shell* es la parte de un sistema operativo con la que interactúas, aunque la mayoría usa shell para referirse a la línea de comandos. *bash* es el lenguaje de programación que se usa en la línea de comandos; en realidad es el acrónimo de 'Born Again SHell'. *Terminal* se usa a veces para referirse a la línea de comandos en Mac. Por último, *CLI* es simplemente el acrónimo de command line interface (interfaz de línea de comandos), y se usa a menudo en el contexto de una aplicación; por ejemplo, uv tiene una interfaz de línea de comandos porque lo ejecutas en la línea de comandos para instalar paquetes (`uv add packagename`).
 
-It's worth mentioning that there's a big difference between the command line on UNIX based systems (MacOS and Linux), and on Windows systems. Here, we'll only address the UNIX version. There is a command line on Windows but it's not widely used for coding. If you're on a Windows machine, you can access a UNIX command line using the Windows Subsystem for Linux.
+Vale la pena mencionar que hay una gran diferencia entre la línea de comandos de los sistemas basados en UNIX (MacOS y Linux) y la de los sistemas Windows. Aquí solo trataremos la versión UNIX. Windows tiene una línea de comandos, pero no se usa mucho para programar. Si usas una máquina con Windows, puedes acceder a una línea de comandos UNIX mediante el Windows Subsystem for Linux.
 
-## Why is the command line useful?
+## ¿Por qué es útil la línea de comandos?
 
-The command line has many uses. Graphical user interfaces are, generally, a bit easier to use *but* they're not very repeatable or scalable. Because the command line uses text-based instructions and can be programmed, it is both repeatable and scalable; properties that are very useful for research and analysis.
+La línea de comandos tiene muchos usos. Las interfaces gráficas de usuario son, en general, un poco más fáciles de usar, *pero* no son muy repetibles ni escalables. Como la línea de comandos usa instrucciones de texto y se puede programar, es repetible y escalable, propiedades muy útiles para la investigación y el análisis.
 
-The broad reasons you might use the command line to issue instructions include:
+Las razones generales por las que podrías usar la línea de comandos para dar instrucciones incluyen:
 
-- software functionality: some software *only* has a command line interface
+- funcionalidad del software: algunos programas *solo* tienen interfaz de línea de comandos
 
-- efficiency: your computer has limited memory, which graphical user interfaces use a lot of—the command line uses less
+- eficiencia: tu computadora tiene memoria limitada, y las interfaces gráficas usan mucha; la línea de comandos usa menos
 
-- reproducibility: scripts that run on the command line are reproducible in a way that clicking around a graphical user interface is not
+- reproducibilidad: los scripts que se ejecutan en la línea de comandos son reproducibles de una forma en que hacer clic en una interfaz gráfica no lo es
 
-- hardware functionality: for high-performance and cloud computing the command line is often the only game in town
+- funcionalidad del hardware: en la computación de alto rendimiento y en la nube, la línea de comandos suele ser la única opción
 
-- automation: multiple programmes, with inputs and outputs, can be run in sequence from a script launched in the command line
+- automatización: varios programas, con entradas y salidas, pueden ejecutarse en secuencia desde un script lanzado en la línea de comandos
 
-Here are some specific tasks you might use the command line to complete:
+Estas son algunas tareas concretas para las que podrías usar la línea de comandos:
 
-- keep your code under version control
+- mantener tu código bajo control de versiones
 
-- renaming and moving multiple files in one command
+- renombrar y mover varios archivos con un solo comando
 
-- finding files on the computer
+- buscar archivos en la computadora
 
-- transforming between document types, for example $\LaTeX$ (.tex) to Word (.docx)
+- convertir entre tipos de documento, por ejemplo de $\LaTeX$ (.tex) a Word (.docx)
 
-- connecting to, and using, cloud resources
+- conectarte a recursos en la nube y usarlos
 
-## Using the command line
+## Uso de la línea de comandos
 
-Bash is often the default command line shell on UNIX but zsh has gained popularity and is now the default for Mac. If you're wondering what to use then I recommend zsh (Z Shell) from [oh-my-zsh](https://ohmyz.sh/).
+Bash suele ser el shell predeterminado en UNIX, pero zsh ha ganado popularidad y ahora es el predeterminado en Mac. Si te preguntas cuál usar, te recomiendo zsh (Z Shell) de [oh-my-zsh](https://ohmyz.sh/).
 
-To open up the command line within Visual Studio Code, you can use the <kbd>⌃</kbd> + <kbd>\`</kbd> keyboard shortcut (on Mac) or <kbd>ctrl</kbd> + <kbd>\`</kbd> (Windows/Linux), or click "View > Terminal".
+Para abrir la línea de comandos dentro de Visual Studio Code, puedes usar el atajo de teclado <kbd>⌃</kbd> + <kbd>\`</kbd> (en Mac) o <kbd>ctrl</kbd> + <kbd>\`</kbd> (Windows/Linux), o hacer clic en "View > Terminal".
 
-You should now see something like this
+Ahora deberías ver algo como esto
 
 ```bash
 username@hostname:~$
 ```
 
-Let's break down what this is telling us. `username` says who the current user is; `@hostname` denotes the name of the computer; `~` is the default (home) directory; and `$` is the 'command prompt', a signifier that this is where you should type your command. (Note that this line may look different depending on what shell and/or operating system you're using.)
+Veamos qué nos dice esto. `username` indica quién es el usuario actual; `@hostname` denota el nombre de la computadora; `~` es el directorio predeterminado (home); y `$` es el 'prompt de comandos', una señal de que aquí es donde debes escribir tu comando. (Ten en cuenta que esta línea puede verse distinta según el shell y/o el sistema operativo que uses).
 
-Let's try a simple command: type `date` into a command line window and hit return. You should see today's date and time (and timezone). You could also try `echo hello` and `whoami`.
+Probemos un comando sencillo: escribe `date` en una ventana de línea de comandos y pulsa Enter. Deberías ver la fecha y hora actuales (y la zona horaria). También puedes probar `echo hello` y `whoami`.
 
-All commands that you run in the terminal have the same structure:
-`command`, followed by `option(s)`, followed by `argument(s)`. The options are also called flags. An example serves to demonstrate this: if you have a terminal open in a directory that includes a CSV file called 'data.csv', the command to look at the first 5 lines is:
+Todos los comandos que ejecutas en la terminal tienen la misma estructura:
+`command`, seguido de `option(s)`, seguido de `argument(s)`. Las opciones también se llaman flags. Un ejemplo sirve para demostrarlo: si tienes una terminal abierta en un directorio que incluye un archivo CSV llamado 'data.csv', el comando para ver las primeras 5 líneas es:
 
 ```bash
 head -n 5 data.csv
 ```
 
-here `head` is the command that looks at the start of the file, `-n` is an option, `5` is the argument to get 5 lines of the file, and `data.csv` is the final argument-the file name.
+aquí `head` es el comando que muestra el inicio del archivo, `-n` es una opción, `5` es el argumento para obtener 5 líneas del archivo y `data.csv` es el argumento final: el nombre del archivo.
 
-The flags or options, such as `-n` in the example above, typically begin with a dash (`-`) or, occasionally, a double dash (`--`). They can also be chained together, for example `ls -la` combines `ls -a` and `ls -l`.
+Los flags u opciones, como `-n` en el ejemplo anterior, suelen empezar con un guion (`-`) u, ocasionalmente, con un guion doble (`--`). También se pueden encadenar; por ejemplo, `ls -la` combina `ls -a` y `ls -l`.
 
 ::: {.callout-warning}
-Spaces take on a special role when using the command line. For this reason, it's good practice to avoid spaces in file names. If you need to refer to a filename with spaces in, you’ll need to use quotes or escape the spaces in the file names using a `\`, for example `this is my file.txt` becomes `this\ is\ my\ file.txt`
+Los espacios cumplen una función especial cuando usas la línea de comandos. Por eso, es buena práctica evitar los espacios en los nombres de archivo. Si necesitas referirte a un nombre de archivo que contiene espacios, tendrás que usar comillas o escapar los espacios del nombre con una `\`; por ejemplo, `this is my file.txt` se convierte en `this\ is\ my\ file.txt`
 :::
 
-To run programmes from the command line, all you need is the name of the programme as the command: in fact, commands *are* programmes. The `date` command refers to an actual programme on your computer that you can find. And this also explains a bit of what's going on when you *run a script from the command line* (more on that later).
+Para ejecutar programas desde la línea de comandos, solo necesitas el nombre del programa como comando: de hecho, los comandos *son* programas. El comando `date` hace referencia a un programa real en tu computadora que puedes encontrar. Y esto también explica un poco lo que ocurre cuando *ejecutas un script desde la línea de comandos* (más sobre esto después).
 
-Once you've run a few commands, you'll notice that you can't navigate around the command line like you can a text file or Python script. Here are some tips for navigating the command line:
+Después de ejecutar algunos comandos, notarás que no puedes moverte por la línea de comandos como lo harías en un archivo de texto o un script de Python. Estos son algunos consejos para moverte por la línea de comandos:
 
-- use tab to complete commands you've only partially written out. Try it by typing `dat` then hitting tab.
+- usa el tabulador para completar comandos que solo has escrito parcialmente. Pruébalo escribiendo `dat` y pulsando el tabulador.
 
-- use the <kbd>↑</kbd> and <kbd>↓</kbd> keys to scroll through previous commands.
+- usa las teclas <kbd>↑</kbd> y <kbd>↓</kbd> para recorrer los comandos anteriores.
 
-- to skip whole words, use <kbd>⌥</kbd> + <kbd>→</kbd> and <kbd>⌥</kbd> + <kbd>←</kbd> on Mac, or <kbd>ctrl</kbd> + <kbd>→</kbd> and <kbd>ctrl</kbd> + <kbd>←</kbd> on Windows and Linux.
+- para saltar palabras completas, usa <kbd>⌥</kbd> + <kbd>→</kbd> y <kbd>⌥</kbd> + <kbd>←</kbd> en Mac, o <kbd>ctrl</kbd> + <kbd>→</kbd> y <kbd>ctrl</kbd> + <kbd>←</kbd> en Windows y Linux.
 
-- <kbd>ctrl</kbd> + <kbd>a</kbd> to move the cursor to the beginning of the line.
+- <kbd>ctrl</kbd> + <kbd>a</kbd> para mover el cursor al inicio de la línea.
 
-- <kbd>ctrl</kbd> + <kbd>e</kbd> moves the cursor to the end of the line.
+- <kbd>ctrl</kbd> + <kbd>e</kbd> mueve el cursor al final de la línea.
 
-- <kbd>ctrl</kbd> + <kbd>k</kbd> to delete everything to the right of the cursor.
+- <kbd>ctrl</kbd> + <kbd>k</kbd> para borrar todo lo que está a la derecha del cursor.
 
-- <kbd>ctrl</kbd> + <kbd>u</kbd> to delete everything to the left of the cursor.
+- <kbd>ctrl</kbd> + <kbd>u</kbd> para borrar todo lo que está a la izquierda del cursor.
 
-- <kbd>ctrl</kbd> + <kbd>r</kbd> to search through previously used commands
+- <kbd>ctrl</kbd> + <kbd>r</kbd> para buscar entre los comandos usados anteriormente
 
-### Navigating directories
+### Navegar entre directorios
 
-While we're on navigating, it's useful to understand *where* in the computer you are when you open the command line. If you open a terminal pane within VS Code, you will start (by default at least) within the same folder as your project. Starting a terminal instance outside of VS Code will get you a terminal in a root directory for your computer; for example, on a Mac, opening a new terminal window starts you in `/Users/yourusername/`.
+Ya que hablamos de navegar, es útil entender *en qué lugar* de la computadora estás cuando abres la línea de comandos. Si abres un panel de terminal dentro de VS Code, empezarás (al menos por defecto) en la misma carpeta que tu proyecto. Si abres una terminal fuera de VS Code, empezarás en un directorio raíz de tu computadora; por ejemplo, en Mac, al abrir una nueva ventana de terminal empiezas en `/Users/yourusername/`.
 
-To find out "where" you are when you open a terminal, you can use the `pwd` command, which stands for "print working directory".
+Para saber "dónde" estás al abrir una terminal, puedes usar el comando `pwd`, que significa "print working directory" (mostrar el directorio de trabajo).
 
-The table below shows some useful commands for moving around your computer using the command line. Note that `cd` accepts a location *relative* to your current directory.
+La siguiente tabla muestra algunos comandos útiles para moverte por tu computadora con la línea de comandos. Ten en cuenta que `cd` acepta una ubicación *relativa* a tu directorio actual.
 
-  | Command               | What it does                                                 |
+  | Comando               | Qué hace                                                     |
   | --------------------- | ------------------------------------------------------------ |
-  | `pwd`                 | Shows current directory                                      |
-  | `cd`                  | Change directory command                                     |
-  | `cd ..`               | Go up one level in the directory (`cd ../..` for two levels) |
-  | `cd ~`                | Go to your home directory                                    |
-  | `cd -`                | Go to the previous directory                                 |
-  | `cd documents/papers` | Go directly to a directory named 'papers'                    |
+  | `pwd`                 | Muestra el directorio actual                                 |
+  | `cd`                  | Comando para cambiar de directorio                           |
+  | `cd ..`               | Sube un nivel en el directorio (`cd ../..` para dos niveles) |
+  | `cd ~`                | Va a tu directorio home                                      |
+  | `cd -`                | Va al directorio anterior                                    |
+  | `cd documents/papers` | Va directamente a un directorio llamado 'papers'             |
 
-## Using Python on the command line
+## Uso de Python en la línea de comandos
 
-There are several ways in which the command line is useful for Python (and these ways are applicable to other languages too).
+La línea de comandos es útil para Python de varias formas (y también se aplican a otros lenguajes).
 
-Of course, packages are installed at the command line, for example to install Jupyter Lab (for running notebooks), the command is
+Por supuesto, los paquetes se instalan desde la línea de comandos; por ejemplo, para instalar Jupyter Lab (para ejecutar notebooks), el comando es
 
 ```bash
 uv add jupyterlab
 ```
 
-Say you have a script called `analysis.py`, you can run it with Python on the command line using
+Si tienes un script llamado `analysis.py`, puedes ejecutarlo con Python en la línea de comandos usando
 
 ```bash
 uv run python analysis.py
 ```
 
-which calls Python as a programme and gives it `analysis.py` as the argument. If you have multiple versions of Python, which you should do if you're following best practice and using a version per project, then you can see *which* version of Python is being used with
+que llama a Python como programa y le pasa `analysis.py` como argumento. Si tienes varias versiones de Python (lo cual deberías tener si sigues las buenas prácticas y usas una versión por proyecto), puedes ver *qué* versión de Python se está usando con
 
 ```bash
 which python
 ```
 
-## Useful commands for the terminal
+## Comandos útiles para la terminal
 
-Now we'll see some useful commands for the terminal.
+Ahora veremos algunos comandos útiles para la terminal.
 
-  | Command  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | What it does                                                                                                                                     |
-  | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-  | `man <command>`                                                                                                                                            | Shows a manual for the given command                                                                                                             |
-  | `touch <filename>`                                                                                                                                         | Creates an empty file named `<filename>`                                                                                                         |
-  | `code <filename>`                                                                                                                                          | Open a file in VS Code (creating it, if it does not exist)                                                                                       |
-  | `mkdir <foldername>`                                                                                                                                       | creates a new folder called `foldername`                                                                                                         |
-  | `echo <text>`                                                                                                                                              | Prints `<text>`                                                                                                                                  |
-  | `cat <filename>`                                                                                                                                           | Print the full contents of `<filename>`                                                                                                          |
-  | `head <filename>`                                                                                                                                          | Print the start of a file                                                                                                                        |
-  | `tail <filename>`                                                                                                                                          | Print the end of a file                                                                                                                          |
-  | `> <filename>`                                                                                                                                             | Redirects output from screen to `<filename>`. For example, `echo "Hello World" > hello.txt`                                                      |
-  | `>> <filename>`                                                                                                                                            | Redirects output from screen to the end of `<filename>`, ie appends output rather than overwrites it                                             |
-  | `                                                                                                                                                          | `                                                                                                                                                | The pipe symbol: uses output from one command as input into another. For example, `head -n 10 data.csv                                               | > hello_world.txt` would write the first 10 lines of data.csv into a file called hello_world.txt |
-  | `less <filename>`                                                                                                                                          | Print out the contents of a file in paginated form. Use `ctrl+v` and `Alt+v` (or `⌘+v` and `⌥+v` on Mac) to move up and down. Press `q` to quit. |
-  | `wc -l`                                                                                                                                                    | Returns number of lines in input, for example `cat <filename>                                                                                    | wc -l`. Use `wc` alone for word count.                                                                                                               |
-  | `sort`                                                                                                                                                     | Arrange lines in a file in alphabetical order                                                                                                    |
-  | `uniq`                                                                                                                                                     | Remove duplicate lines from input, for example `cat <filename>                                                                                   | uniq` or `uniq -d` to show duplicate files                                                                                                           |
-  | `mv`                                                                                                                                                       | Move or rename a file; for example, `mv file1 file2` would rename `file1` to `file2` while `mv file1 ~` would move `file1` to the home directory |
-  | `cp`                                                                                                                                                       | Copy a file; for example, `cp file1 file2` would copy `file1` to `file2` while `cp file1 ~` would make a copy of `file1` in the home directory   |
-  | `rm <filename>`                                                                                                                                            | Permanently remove a file                                                                                                                        |
-  | `rmdir <directory>`                                                                                                                                        | Permanently remove an empty directory                                                                                                            |
-  | `rm -rf <directory>`                                                                                                                                       | ⚠ Permanently remove everything in a directory ⚠                                                                                                 |
-  | `grep <searchterm>`                                                                                                                                        | Search for a given term, for example `cat hello_world.txt                                                                                        | grep world`                                                                                                                                          |
-  | `ls`                                                                                                                                                       | Basically, this means list stuff (files and folders) in the current directory                                                                    |
-  | `ls -a`                                                                                                                                                    | List stuff in the current directory even if it's hidden                                                                                          |
-  | `ls -l`                                                                                                                                                    | List stuff in a more readable format and show permissions                                                                                        |
-  | `ls -S`                                                                                                                                                    | List stuff by size                                                                                                                               |
-  | `file <filename>`                                                                                                                                          | Give information on the file type of `<filename>`                                                                                                |
-  | `find`                                                                                                                                                     | Find specific files on your computer, can be piped into other commands for example `find *.md -size +5k -type f                                  | xargs wc -l` will count the number of lines `wc -l` of all files, `-type f`, ending in `.md` that are greater than 5 kilobytes in size, `-size +5k`. |
-  | `diff -u <filename1> <filename2>`                                                                                                                          | Show a single summary of the differences between two files.                                                                                      |
+  | Comando  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Qué hace                                                                                                                                                                 |
+  | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+  | `man <command>`                                                                                                                                            | Muestra el manual del comando indicado                                                                                                                                   |
+  | `touch <filename>`                                                                                                                                         | Crea un archivo vacío llamado `<filename>`                                                                                                                               |
+  | `code <filename>`                                                                                                                                          | Abre un archivo en VS Code (y lo crea si no existe)                                                                                                                      |
+  | `mkdir <foldername>`                                                                                                                                       | Crea una carpeta nueva llamada `foldername`                                                                                                                              |
+  | `echo <text>`                                                                                                                                              | Imprime `<text>`                                                                                                                                                         |
+  | `cat <filename>`                                                                                                                                           | Imprime todo el contenido de `<filename>`                                                                                                                                |
+  | `head <filename>`                                                                                                                                          | Imprime el inicio de un archivo                                                                                                                                          |
+  | `tail <filename>`                                                                                                                                          | Imprime el final de un archivo                                                                                                                                           |
+  | `> <filename>`                                                                                                                                             | Redirige la salida de la pantalla a `<filename>`. Por ejemplo, `echo "Hello World" > hello.txt`                                                                          |
+  | `>> <filename>`                                                                                                                                            | Redirige la salida de la pantalla al final de `<filename>`, es decir, añade la salida en lugar de sobrescribir el archivo                                                |
+  | `                                                                                                                                                          | `                                                                                                                                                                        | El símbolo pipe: usa la salida de un comando como entrada de otro. Por ejemplo, `head -n 10 data.csv                                                     | > hello_world.txt` escribiría las primeras 10 líneas de data.csv en un archivo llamado hello_world.txt |
+  | `less <filename>`                                                                                                                                          | Imprime el contenido de un archivo de forma paginada. Usa `ctrl+v` y `Alt+v` (o `⌘+v` y `⌥+v` en Mac) para desplazarte hacia arriba y hacia abajo. Pulsa `q` para salir. |
+  | `wc -l`                                                                                                                                                    | Devuelve el número de líneas de la entrada, por ejemplo `cat <filename>                                                                                                  | wc -l`. Usa `wc` solo para contar palabras.                                                                                                              |
+  | `sort`                                                                                                                                                     | Ordena alfabéticamente las líneas de un archivo                                                                                                                          |
+  | `uniq`                                                                                                                                                     | Elimina las líneas duplicadas de la entrada, por ejemplo `cat <filename>                                                                                                 | uniq`, o `uniq -d` para mostrar los duplicados                                                                                                           |
+  | `mv`                                                                                                                                                       | Mueve o renombra un archivo; por ejemplo, `mv file1 file2` renombraría `file1` a `file2`, mientras que `mv file1 ~` movería `file1` al directorio de inicio              |
+  | `cp`                                                                                                                                                       | Copia un archivo; por ejemplo, `cp file1 file2` copiaría `file1` en `file2`, mientras que `cp file1 ~` haría una copia de `file1` en el directorio de inicio             |
+  | `rm <filename>`                                                                                                                                            | Elimina un archivo de forma permanente                                                                                                                                   |
+  | `rmdir <directory>`                                                                                                                                        | Elimina de forma permanente un directorio vacío                                                                                                                          |
+  | `rm -rf <directory>`                                                                                                                                       | ⚠ Elimina de forma permanente todo lo que hay en un directorio ⚠                                                                                                         |
+  | `grep <searchterm>`                                                                                                                                        | Busca un término dado, por ejemplo `cat hello_world.txt                                                                                                                  | grep world`                                                                                                                                              |
+  | `ls`                                                                                                                                                       | Básicamente, significa listar el contenido (archivos y carpetas) del directorio actual                                                                                   |
+  | `ls -a`                                                                                                                                                    | Lista el contenido del directorio actual, incluso lo oculto                                                                                                              |
+  | `ls -l`                                                                                                                                                    | Lista el contenido en un formato más legible y muestra los permisos                                                                                                      |
+  | `ls -S`                                                                                                                                                    | Lista el contenido por tamaño                                                                                                                                            |
+  | `file <filename>`                                                                                                                                          | Da información sobre el tipo de archivo de `<filename>`                                                                                                                  |
+  | `find`                                                                                                                                                     | Busca archivos concretos en tu computadora; se puede encadenar con otros comandos mediante pipe, por ejemplo `find *.md -size +5k -type f                                | xargs wc -l` contará el número de líneas (`wc -l`) de todos los archivos (`-type f`) que terminan en `.md` y que pesan más de 5 kilobytes (`-size +5k`). |
+  | `diff -u <filename1> <filename2>`                                                                                                                          | Muestra un único resumen de las diferencias entre dos archivos.                                                                                                          |
 
-![More details of the grep command](https://pbs.twimg.com/media/DcPeD_CW0AEkSar?format=jpg&name=small)
-*More details of the grep command, by [\@b0rk](https://twitter.com/b0rk).*
+![Más detalles del comando grep](https://pbs.twimg.com/media/DcPeD_CW0AEkSar?format=jpg&name=small)
+*Más detalles del comando grep, por [\@b0rk](https://twitter.com/b0rk).*
 
-You can write for loops in bash (remember, it's a language). The general structure is
+Puedes escribir bucles for en bash (recuerda que es un lenguaje). La estructura general es
 
 ```bash
 for i in LIST
@@ -177,13 +177,13 @@ do
 done
 ```
 
-These can be squeezed into a single line (though it's less readable):
+Se pueden condensar en una sola línea (aunque resulta menos legible):
 
 ```bash
 for i in {1..5}; do echo $i; done
 ```
 
-A more interesting example is giving the number of lines of text, number of words, and number of characters of every CSV file in a directory:
+Un ejemplo más interesante es obtener el número de líneas de texto, el número de palabras y el número de caracteres de cada archivo CSV de un directorio:
 
 ```bash
 for i in $(ls *.csv)
@@ -192,7 +192,7 @@ do
 done
 ```
 
-We can get even more fancy with the above example and put those counts in a new text file:
+Podemos sofisticar aún más el ejemplo anterior y guardar esos recuentos en un nuevo archivo de texto:
 
 ```bash
 touch counts_of_csvs.txt
@@ -202,36 +202,36 @@ do
 done
 ```
 
-A couple of new features appeared in the examples above.
+En los ejemplos anteriores aparecieron un par de características nuevas.
 
-`*` is a *wildcard character*, it tells bash to look for anything that ends in ".csv". This is not the only special case; `?` serves a similar purpose of standing in for any character but just *one* character rather than arbitrarily many. If you had a folder with `file1.csv`, `file2.csv`, etc., up to 9, then you could use `file?.csv` to refer to all of them but this would not pick up `file10.csv`.
+`*` es un *carácter comodín*: le indica a bash que busque cualquier cosa que termine en ".csv". No es el único caso especial; `?` cumple una función similar, pues sustituye a cualquier carácter, pero solo a *uno* en lugar de a un número arbitrario. Si tuvieras una carpeta con `file1.csv`, `file2.csv`, etc., hasta el 9, podrías usar `file?.csv` para referirte a todos ellos, pero esto no incluiría `file10.csv`.
 
-Another special character we've already seen is the curly brace, `{}`. Whenever you have a common substring in a series of commands using curly braces tells the command line to expand what's in them automatically. In an example above, this is used on 1 to 5. But it can also be used in, for example, file names:
+Otro carácter especial que ya hemos visto son las llaves, `{}`. Cuando tienes una subcadena común en una serie de comandos, usar llaves le indica a la línea de comandos que expanda automáticamente lo que contienen. En un ejemplo anterior, se usa con 1 a 5. Pero también se puede usar, por ejemplo, en nombres de archivo:
 
 ```bash
 cp /path/to/project/{foo,bar,baz}.csv /newpath
 ```
 
-would copy the csv files called `foo`, `bar`, and `baz` to the directory `/newpath`. Similarly,
+copiaría los archivos csv llamados `foo`, `bar` y `baz` al directorio `/newpath`. De forma similar,
 
 ```bash
 touch {a..c}{.csv,.txt}
 ```
 
-would create the files a.csv, a.txt, b.csv, b.txt, c.csv, and c.txt.
+crearía los archivos a.csv, a.txt, b.csv, b.txt, c.csv y c.txt.
 
 ## Scripting
 
-For tasks that will be repeated, it's more reproducible and reliable to put your terminal commands into a script than executing them from memory each time—not to mention a lot easier! Because the command line has its own language, we can create scripts that execute commands. There are some differences between bash and zsh but we'll try and keep the guidelines general.
+Para tareas que se van a repetir, es más reproducible y fiable poner tus comandos de terminal en un script que ejecutarlos de memoria cada vez, ¡además de mucho más fácil! Como la línea de comandos tiene su propio lenguaje, podemos crear scripts que ejecuten comandos. Hay algunas diferencias entre bash y zsh, pero intentaremos que las pautas sean generales.
 
-Create a script called `hello_world.sh`. Inside it, write:
+Crea un script llamado `hello_world.sh`. Dentro, escribe:
 
 ```bash
 #!/bin/bash
 echo "Hello World!"
 ```
 
-The first line is called a shebang and it indicates what programme to run the commands below with (sh means any Bash-compatible shell). The `#` character also indicates a comment. The second part will print out a string to the screen. Now, depending on whether you're using bash or zsh, run
+La primera línea se llama shebang e indica con qué programa se deben ejecutar los comandos siguientes (sh significa cualquier shell compatible con Bash). El carácter `#` también indica un comentario. La segunda parte imprimirá un string en la pantalla. Ahora, según uses bash o zsh, ejecuta
 
 ```bash
 bash hello_world.sh
@@ -239,7 +239,7 @@ bash hello_world.sh
 zsh hello_world.sh
 ```
 
-Let's see a more complex example:
+Veamos un ejemplo más complejo:
 
 ```bash
 #!/bin/bash
@@ -247,59 +247,59 @@ echo "Starting program at $(date)"
 echo "Running program $0 with $# arguments
 ```
 
-which produces
+que produce
 
 ```bash
 Starting program at Thu 25 Mar 2021 21:23:22 GMT
 Running program hello_world.sh with 0 arguments
 ```
 
-Notice that using `"$(command)"` inserted the output of the command into the text string. To assign variables in bash and zsh scripts, use the syntax `foo=bar` (no spaces) and access the value of the variable with `$foo`.
+Observa que usar `"$(command)"` insertó la salida del comando en el string de texto. Para asignar variables en scripts de bash y zsh, usa la sintaxis `foo=bar` (sin espacios) y accede al valor de la variable con `$foo`.
 
-Strings can be defined with `'` and `"` delimiters, but they are not equivalent. Strings delimited with `'` are literal strings and will not substitute variable values whereas `"` delimited strings will.
+Los strings se pueden definir con los delimitadores `'` y `"`, pero no son equivalentes. Los strings delimitados con `'` son literales y no sustituyen los valores de las variables, mientras que los delimitados con `"` sí lo hacen.
 
-Bash and zsh have a couple of unusual features as compared with other languages because of what they are used for. One of those are the special variables that come pre-defined, one of which we saw in the example above. Here is a list of some of the main ones:
+Bash y zsh tienen un par de características poco habituales en comparación con otros lenguajes debido a su uso. Una de ellas son las variables especiales predefinidas, una de las cuales vimos en el ejemplo anterior. Esta es una lista de algunas de las principales:
 
-- `$0` - Name of the script
-- `$1` to `$9` - Arguments to the script (ordered by the numbers)
-- `$@` - All the arguments
-- `$#` - Number of arguments
-- `!!` - Entire last command, including arguments
+- `$0` - Nombre del script
+- `$1` a `$9` - Argumentos del script (ordenados por número)
+- `$@` - Todos los argumentos
+- `$#` - Número de argumentos
+- `!!` - Último comando completo, incluidos los argumentos
 
-You can find more of these special variables [here](https://tldp.org/LDP/abs/html/special-chars.html).
+Puedes encontrar más variables especiales [aquí](https://tldp.org/LDP/abs/html/special-chars.html).
 
-## Useful command line tools
+## Herramientas útiles de línea de comandos
 
-[**pandoc**](https://pandoc.org/) is absolutely brilliant: if you need to convert files containing text from one format to another, it really is a swiss-army knife. There isn't space here to list the ridiculous number of documents it can convert between, but, importantly, it can translate back and forth between all of the following: markdown, $\LaTeX$, Microsoft Word's docx, OpenOffice's ODT, HTML, and Jupyter Notebook.
+[**pandoc**](https://pandoc.org/) es absolutamente genial: si necesitas convertir archivos de texto de un formato a otro, es una auténtica navaja suiza. Aquí no hay espacio para enumerar la enorme cantidad de formatos entre los que puede convertir, pero, lo más importante, puede traducir en ambos sentidos entre todos los siguientes: markdown, $\LaTeX$, docx de Microsoft Word, ODT de OpenOffice, HTML y Jupyter Notebook.
 
-It can also write from any of those formats (and more) in one direction *to* PDF, Microsoft Powerpoint, and $\LaTeX$ Beamer.
+También puede convertir desde cualquiera de esos formatos (y más), en un solo sentido, *a* PDF, Microsoft Powerpoint y $\LaTeX$ Beamer.
 
-To use **pandoc**, install it following the instructions on the website and then call it like this:
+Para usar **pandoc**, instálalo siguiendo las instrucciones del sitio web y luego llámalo así:
 
 ```bash
 pandoc mydoc.tex -o mydoc.docx
 ```
 
-This is an example where the input is a .tex document and the output, `-o`, is a Microsoft Word docx file.
+Este es un ejemplo en el que la entrada es un documento .tex y la salida, `-o`, es un archivo docx de Microsoft Word.
 
-You can get quite fancy with **pandoc**, for example you can translate a whole book's worth of latex into a Word doc complete with a Word style, a bibliography via biblatex, equations, and figures. Nothing can save Word from being painful to use, but **pandoc** certainly helps.
+Puedes hacer cosas bastante sofisticadas con **pandoc**; por ejemplo, puedes traducir un libro entero en latex a un documento de Word, con estilo de Word, bibliografía mediante biblatex, ecuaciones y figuras. Nada puede evitar que Word sea un suplicio, pero **pandoc** sin duda ayuda.
 
-[**eza**](https://eza.rocks/) is an upgrade on the `ls` command. It is designed to be an improved file lister with more features and better defaults. It uses colours to distinguish file types and metadata. Follow the instructions on the website to install it on your operating system. To replace `ls` with `eza`, you can use a terminal *alias*. There's a good guide [available here](https://denisrasulev.medium.com/eza-the-best-ls-command-replacement-9621252323e).
+[**eza**](https://eza.rocks/) es una mejora del comando `ls`. Está diseñado para ser un listador de archivos mejorado, con más funciones y mejores valores predeterminados. Usa colores para distinguir los tipos de archivo y los metadatos. Sigue las instrucciones del sitio web para instalarlo en tu sistema operativo. Para reemplazar `ls` por `eza`, puedes usar un *alias* de terminal. Hay una buena guía [disponible aquí](https://denisrasulev.medium.com/eza-the-best-ls-command-replacement-9621252323e).
 
-**nano** is a built-in text editor that runs *within* the terminal. This can be really useful if you're working on the cloud (but it's not got the rich features of a GUI-based text editor like VS Code). To open a file using **nano**, the command is `nano file.txt`. Nano displays instructions on how to navigate when it loads up but exiting is the hardest part: when you're done, hit `Ctrl+X`, then `y` to save, and then `enter` to exit.
+**nano** es un editor de texto integrado que se ejecuta *dentro* de la terminal. Puede ser muy útil si trabajas en la nube (aunque no tiene las funciones avanzadas de un editor de texto con interfaz gráfica como VS Code). Para abrir un archivo con **nano**, el comando es `nano file.txt`. Nano muestra instrucciones de navegación al cargarse, pero salir es lo más difícil: cuando termines, pulsa `Ctrl+X`, luego `y` para guardar y después `enter` para salir.
 
-[**wget**](https://www.gnu.org/software/wget/) is a command-line utility for downloading files from the internet. It's very simple to use, the syntax is just `wget [options] [url]`. For example, to download the starwars csv file used in this book, the command is
+[**wget**](https://www.gnu.org/software/wget/) es una utilidad de línea de comandos para descargar archivos de internet. Es muy sencilla de usar; la sintaxis es simplemente `wget [options] [url]`. Por ejemplo, para descargar el archivo csv de starwars usado en este libro, el comando es
 
 ```bash
 wget https://github.com/aeturrell/coding-for-economists/blob/main/data/starwars.csv
 ```
 
-[**htop**](https://htop.dev/) is a tool that lets you see what processes are running on your computer at any time (across individual processors), and how much memory you are using up. To install it on a Mac, you can use `brew install htop` if you use homebrew. Otherwise you can compile it from source after downloading it from the website. To use it, simply type `htop` on the command line.
+[**htop**](https://htop.dev/) es una herramienta que te permite ver qué procesos se están ejecutando en tu computadora en cualquier momento (en cada procesador) y cuánta memoria estás usando. Para instalarla en un Mac, puedes usar `brew install htop` si usas homebrew. Si no, puedes compilarla desde el código fuente tras descargarla del sitio web. Para usarla, simplemente escribe `htop` en la línea de comandos.
 
-[**ncdu**](https://dev.yorhel.nl/ncdu) is a disk usage analyser. It reports, interactively and via the terminal, how much space in a folder is taking up. You can also use return to enter a folder and explore sub-folders. This is especially useful when using a remote computer that you can't view via a graphical user interface (GUI).
+[**ncdu**](https://dev.yorhel.nl/ncdu) es un analizador de uso de disco. Informa, de forma interactiva y a través de la terminal, cuánto espacio ocupa el contenido de una carpeta. También puedes pulsar Intro para entrar en una carpeta y explorar sus subcarpetas. Esto es especialmente útil cuando usas una computadora remota que no puedes ver mediante una interfaz gráfica de usuario (GUI).
 
-[**ffmpeg**](https://www.ffmpeg.org/) is a command line tool that aims to "decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge." Look at the documentation for all of the uses.
+[**ffmpeg**](https://www.ffmpeg.org/) es una herramienta de línea de comandos que pretende "decodificar, codificar, transcodificar, multiplexar, demultiplexar, transmitir, filtrar y reproducir prácticamente cualquier cosa que humanos y máquinas hayan creado. Admite desde los formatos antiguos más oscuros hasta los más punteros". Consulta la documentación para ver todos sus usos.
 
-[**yank**](https://github.com/mptre/yank) reads input from stdin (what you see in the terminal) and displays a selection interface that allows a field to be selected and copied to the clipboard. A typical use case would be to copy and paste a file name that you've found from using the `ls` command. For example, running `ls -lah | yank` in a directory brings up a list of permissions, sizes, users, dates modified, and names of files. You can then navigate to the filename you want with the keyboard, hit return, and have that file name in the clipboard ready to paste into your next terminal command. There's a nice demo [here](https://calmcode.io/cool-cli/yank.html).
+[**yank**](https://github.com/mptre/yank) lee la entrada de stdin (lo que ves en la terminal) y muestra una interfaz de selección que permite seleccionar un campo y copiarlo al portapapeles. Un caso de uso típico sería copiar y pegar un nombre de archivo que has encontrado con el comando `ls`. Por ejemplo, ejecutar `ls -lah | yank` en un directorio muestra una lista de permisos, tamaños, usuarios, fechas de modificación y nombres de archivos. Después puedes desplazarte con el teclado hasta el nombre de archivo que quieras, pulsar Intro y tener ese nombre en el portapapeles, listo para pegarlo en tu siguiente comando de terminal. Hay una buena demostración [aquí](https://calmcode.io/cool-cli/yank.html).
 
-For more on the command line, see [The Art of the Command Line](https://github.com/jlevy/the-art-of-command-line). In terms of other commands, you might like to check out `patch`, `sed`, and `awk`.
+Para saber más sobre la línea de comandos, consulta [The Art of the Command Line](https://github.com/jlevy/the-art-of-command-line). En cuanto a otros comandos, quizá te interese echar un vistazo a `patch`, `sed` y `awk`.

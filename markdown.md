@@ -1,57 +1,57 @@
 # Markdown {#sec-markdown}
 
-## Introduction
+## Introducción
 
-In this chapter, you'll meet the lightweight markup language called *Markdown* that is very popular for lots of coding-related applications and in reproducible analysis. As an example of its many uses, this chapter is written in markdown!
+En este capítulo conocerás el lenguaje de marcado ligero llamado *Markdown*, muy popular en muchas aplicaciones relacionadas con la programación y en el análisis reproducible. Como ejemplo de sus muchos usos, ¡este capítulo está escrito en markdown!
 
-## Prerequisites
+## Requisitos previos
 
-Although you can write markdown in any plain text editor, this book recommends [Visual Studio Code](https://code.visualstudio.com/) as a markdown editor. It can also render markdown files that are open so you can see what the finished, output product will look like; you'll need to install the **Markdown All in One** and **Markdown Preview Enhanced** extensions and then either right-click within a markdown file (extension `.md`) and choose *Markdown Preview Enhanced: Open Preview to the Side*.
+Aunque puedes escribir markdown en cualquier editor de texto plano, este libro recomienda [Visual Studio Code](https://code.visualstudio.com/) como editor de markdown. También puede renderizar los archivos markdown abiertos para que veas cómo quedará el producto final; necesitarás instalar las extensiones **Markdown All in One** y **Markdown Preview Enhanced** y luego hacer clic derecho dentro de un archivo markdown (extensión `.md`) y elegir *Markdown Preview Enhanced: Open Preview to the Side*.
 
-If you're not using Visual Studio Code, you can experiment with Markdown in the text cells of Jupyter Notebooks in JupyterLab, in the text cells of Google Colab notebooks, or online via [Dillinger](https://dillinger.io/), an online live-coding markdown environment.
+Si no usas Visual Studio Code, puedes experimentar con Markdown en las celdas de texto de los Jupyter Notebooks en JupyterLab, en las celdas de texto de los notebooks de Google Colab, o en línea mediante [Dillinger](https://dillinger.io/), un entorno en línea de edición de markdown en vivo.
 
-### Introduction to Markdown
+### Introducción a Markdown
 
-Markdown is different from What-You-See-Is-What-You-Get document preparation software such as Microsoft Word because the *input* (a form of plain text) looks different from the rendered *output*. In Word, you click buttons to achieve the same formatting. When writing markdown, you specify the formatting elements of your documents with instructions that are, more or less, like code. If you're familiar with how raw HTML and rendered HTML look, it's a similar idea (and HTML is itself a markup language). Note, however, that vanilla markdown cannot execute Python code even if you can include code snippets in it just as you could write down some code in a Word document.
+Markdown es diferente del software de preparación de documentos «lo que ves es lo que obtienes» como Microsoft Word, porque la *entrada* (una forma de texto plano) se ve distinta de la *salida* renderizada. En Word, haces clic en botones para lograr el formato. Al escribir markdown, especificas los elementos de formato de tus documentos con instrucciones que son, más o menos, como código. Si conoces cómo se ven el HTML sin procesar y el HTML renderizado, es una idea similar (y HTML es en sí mismo un lenguaje de marcado). Ten en cuenta, sin embargo, que markdown básico no puede ejecutar código Python, aunque puedes incluir fragmentos de código en él, igual que podrías escribir algo de código en un documento de Word.
 
-Markdown was created to be as readable as possible, even when you are writing it. It's also very simple, with few commands to remember: the idea is that you should focus on writing text rather than formatting.
+Markdown se creó para ser lo más legible posible, incluso mientras lo escribes. También es muy sencillo, con pocos comandos que recordar: la idea es que te concentres en escribir texto y no en el formato.
 
-The standard extension for files that only contain markdown is `.md`, but you may also see `.qmd` in the context of markdown with executable code chunks. And you can find markdown in the cells of Jupyter notebooks (file extension `.ipynb`) too.
+La extensión estándar para archivos que solo contienen markdown es `.md`, pero también puedes ver `.qmd` en el contexto de markdown con bloques de código ejecutable. Y también puedes encontrar markdown en las celdas de los notebooks de Jupyter (extensión de archivo `.ipynb`).
 
-There are plenty of situations in which markdown can be used to communicate:
+Hay muchas situaciones en las que markdown puede usarse para comunicar:
 
-- coders and data scientists often use markdown to write documents, for example the documentation of packages
-- to create websites, reports, slides, and research papers
-- in the text cells of Jupyter Notebooks
-- as a base format that tools like **pandoc** and **Quarto** can turn into other document types
-- to write books about data science!
+- programadores y científicos de datos suelen usar markdown para escribir documentos, por ejemplo la documentación de paquetes
+- para crear sitios web, informes, diapositivas y artículos de investigación
+- en las celdas de texto de los Jupyter Notebooks
+- como formato base que herramientas como **pandoc** y **Quarto** pueden convertir en otros tipos de documentos
+- ¡para escribir libros sobre ciencia de datos!
 
-Some of the advantages of markdown are:
+Algunas de las ventajas de markdown son:
 
-- Markdown files can be opened using by any plain text editor
-- Markdown is operating system independent
-- Markdown is very readable, even when not being rendered
-- Many websites support markdown syntax, eg Github (called Github-flavoured markdown) and Reddit
+- Los archivos markdown pueden abrirse con cualquier editor de texto plano
+- Markdown es independiente del sistema operativo
+- Markdown es muy legible, incluso sin renderizar
+- Muchos sitios web admiten la sintaxis markdown, por ejemplo Github (llamado Github-flavoured markdown) y Reddit
 
-The rest of this chapter will cover most of the markdown syntax.
+El resto de este capítulo cubrirá la mayor parte de la sintaxis de markdown.
 
-#### The Markdown Syntax
+#### La sintaxis de Markdown
 
-##### Headings
+##### Encabezados
 
-Let's run through the basics of markdown. For example, a single hash (`#`) denotes the title of a document, like so:
+Repasemos lo básico de markdown. Por ejemplo, una sola almohadilla (`#`) indica el título de un documento, así:
 
 ```markdown
 # Heading
 ```
 
-The next level of sub-heading can be specified by two hashes, like this:
+El siguiente nivel de subencabezado se especifica con dos almohadillas, así:
 
 ```markdown
 ## Sub-heading
 ```
 
-Each next level heading gets successively smaller, for example:
+Cada nivel siguiente de encabezado se hace sucesivamente más pequeño, por ejemplo:
 
 ```markdown
 
@@ -65,39 +65,39 @@ Each next level heading gets successively smaller, for example:
 
 ```
 
-becomes
+se convierte en
 
-### Phylum
+### Filo
 
-#### Class
+#### Clase
 
-##### Order
+##### Orden
 
-###### Family
+###### Familia
 
-If you're using Visual Studio Code, and you're on the explorer panel, you can see the outline (the structure of headings and sub-headings) of your markdown document under the 'outline' drop down.
+Si usas Visual Studio Code y estás en el panel del explorador, puedes ver el esquema (la estructura de encabezados y subencabezados) de tu documento markdown en el desplegable 'outline'.
 
-### In-Line Syntax
+### Sintaxis en línea
 
-Here are some other common syntax features that you'll need:
+Estas son otras características de sintaxis comunes que necesitarás:
 
-- to create *italic* text, it's `*one asterisk on either side of the text*` 
-- **bold** text is produced from `**two asterisks**`
-- ***bold italic*** is `***three asterisks***`
-- links are produced with square brackets for the text and parenthesis for the hyperlink, like this `[text](link)`
-- in-line code is shown by backticks, like this \`code\`
-- `~~strikethrough~~` looks like this ~~strikethrough~~
-- `^(superscript)` creates ^(superscript)
-- Maths is supported in-line via enclosing dollar signs, eg `${\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}$`, which renders as ${\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}$
-- Unicode is supported, so you can write symbols like ∰, as are emoji; syntax like `:tada:` creates :tada:
+- para crear texto en *cursiva*, se usa `*un asterisco a cada lado del texto*` 
+- el texto en **negrita** se produce con `**dos asteriscos**`
+- la ***negrita cursiva*** es `***tres asteriscos***`
+- los enlaces se producen con corchetes para el texto y paréntesis para el hipervínculo, así `[texto](enlace)`
+- el código en línea se muestra con comillas invertidas, así \`código\`
+- `~~tachado~~` se ve así ~~tachado~~
+- `^(superíndice)` crea ^(superíndice)
+- Las matemáticas en línea se admiten encerrándolas entre signos de dólar, por ejemplo `${\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}$`, que se renderiza como ${\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}$
+- Se admite Unicode, así que puedes escribir símbolos como ∰, al igual que emoji; una sintaxis como `:tada:` crea :tada:
 
-### Text Block Syntax
+### Sintaxis de bloques de texto
 
-Quotes can be achieved by adding an arrow, `>`, to every line:
+Las citas se logran añadiendo una flecha, `>`, a cada línea:
 
-> Here is a quote!
+> ¡Aquí hay una cita!
 
-Unordered lists can be produced with either `-` or `*` on separate lines so that
+Las listas sin orden se producen con `-` o `*` en líneas separadas, de modo que
 
 ```markdown
 - first item
@@ -105,13 +105,13 @@ Unordered lists can be produced with either `-` or `*` on separate lines so that
 - third item
 ```
 
-becomes
+se convierte en
 
-- first item
-- second item
-- third item
+- primer elemento
+- segundo elemento
+- tercer elemento
 
-Ordered lists can be created by simply writing successive numbers on successive lines:
+Las listas ordenadas se crean simplemente escribiendo números sucesivos en líneas sucesivas:
 
 ```markdown
 1. first item
@@ -119,13 +119,13 @@ Ordered lists can be created by simply writing successive numbers on successive 
 3. third item
 ```
 
-becomes
+se convierte en
 
-1. first item
-2. second item
-3. third item
+1. primer elemento
+2. segundo elemento
+3. tercer elemento
 
-Both types of list can be subsetted so that
+Ambos tipos de lista pueden anidarse, de modo que
 
 ```markdown
 - first item
@@ -134,14 +134,14 @@ Both types of list can be subsetted so that
 - second item
 ```
 
-becomes
+se convierte en
 
-- first item
-  - sub-item
-    - sub-sub-item
-- second item
+- primer elemento
+  - subelemento
+    - sub-subelemento
+- segundo elemento
 
-The basic syntax to create tables is
+La sintaxis básica para crear tablas es
 
 ```markdown
 | Cheese              | Country         | Cost per kg |
@@ -151,17 +151,17 @@ The basic syntax to create tables is
 | Pélardon            | France          | £37         |
 ```
 
-which becomes
+que se convierte en
 
-  | Cheese             | Country     | Cost per kg |
-  | ------------------ | ----------- | ----------- |
-  | Appleby's Cheshire | UK          | £30         |
-  | Edam               | Netherlands | £8          |
-  | Pélardon           | France      | £37         |
+  | Queso              | País         | Coste por kg |
+  | ------------------ | ------------ | ------------ |
+  | Appleby's Cheshire | Reino Unido  | £30          |
+  | Edam               | Países Bajos | £8           |
+  | Pélardon           | Francia      | £37          |
 
-but you will rarely want to write these out yourself! In practice, it's easiest to export a markdown file from a **pandas** data frame using `df.to_markdown()` or use the handy website, [markdown table generator](https://www.tablesgenerator.com/markdown_tables).
+¡pero rara vez querrás escribirlas tú mismo! En la práctica, lo más fácil es exportar un archivo markdown desde un dataframe de **pandas** usando `df.to_markdown()` o usar el práctico sitio web [markdown table generator](https://www.tablesgenerator.com/markdown_tables).
 
-While inline code was rendered with backticks, you can render code blocks using three backticks and the name of the language like so:
+Mientras que el código en línea se renderizaba con comillas invertidas, puedes renderizar bloques de código usando tres comillas invertidas y el nombre del lenguaje, así:
 
 ````markdown
 ```python
@@ -171,7 +171,7 @@ df = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
 ```
 ````
 
-which gets rendered as:
+que se renderiza como:
 
 ```python
 import pandas as pd
@@ -179,9 +179,9 @@ df = pd.DataFrame([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
                   columns=['a', 'b', 'c'])
 ```
 
-Note that there is syntax highlighting of data types and reserved keywords. The syntax highlighting supports a wide range of languages. Also note that the syntax is quite similar to what's used for code blocks that will be executed by **Quarto** when using markdown for publishing automated reports (more on this below).
+Observa que hay resaltado de sintaxis para los tipos de datos y las palabras clave reservadas. El resaltado de sintaxis admite una amplia variedad de lenguajes. Observa también que la sintaxis es bastante similar a la que se usa para los bloques de código que **Quarto** ejecutará cuando uses markdown para publicar informes automatizados (más sobre esto abajo).
 
-Display maths is rendered by double dollar signs, like so:
+Las matemáticas en bloque se renderizan con dobles signos de dólar, así:
 
 ```markdown
 $$
@@ -189,23 +189,23 @@ $$
 $$
 ```
 
-which renders as
+que se renderiza como
 
 $$
 {\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}\,,}
 $$
 
-To insert images, use the structure `![alt-text](url or filepath)`, for example
+Para insertar imágenes, usa la estructura `![alt-text](url or filepath)`, por ejemplo
 
 ```markdown
 ![Logo of Python4DS](https://github.com/aeturrell/python4DS/blob/main/logo.png?raw=true)
 ```
 
-produces
+produce
 
-![Logo of Python4DS](https://github.com/aeturrell/python4DS/blob/main/logo.png?raw=true)
+![Logo de Python4DS](https://github.com/aeturrell/python4DS/blob/main/logo.png?raw=true)
 
-You can also produce task lists, for example:
+También puedes producir listas de tareas, por ejemplo:
 
 ```markdown
 - [x] Finish chapter 1
@@ -213,13 +213,13 @@ You can also produce task lists, for example:
 - [ ] Launch book :rocket:
 ```
 
-produces
+produce
 
-- [x] Finish chapter 1
-- [ ] Edit chapter 2
-- [ ] Launch book :rocket:
+- [x] Terminar el capítulo 1
+- [ ] Editar el capítulo 2
+- [ ] Lanzar el libro :rocket:
 
-Footnotes can be be created using `[^1]` followed by `[^2]`, and so on, or by content related ones like `[^note]`. Here are these three being used: one example[^1], and another[^2], while the third is here[^note] and has a label instead of a number (that you can't see when rendered). You'll need to scroll right to the bottom of the page to see the info associated with these footnotes, but the syntax for filling in their info is:
+Las notas al pie se crean usando `[^1]` seguido de `[^2]`, y así sucesivamente, o con etiquetas relacionadas con el contenido como `[^note]`. Aquí se usan las tres: un ejemplo[^1], y otro[^2], mientras que la tercera está aquí[^note] y tiene una etiqueta en lugar de un número (que no puedes ver al renderizar). Tendrás que desplazarte hasta el final de la página para ver la información asociada a estas notas al pie, pero la sintaxis para rellenar su información es:
 
 ```markdown
 [^1]: First footnote.
@@ -228,31 +228,31 @@ Footnotes can be be created using `[^1]` followed by `[^2]`, and so on, or by co
 [^note]: Named footnotes will still render with numbers instead of the text but allow easier identification and linking.
 ```
 
-[^1]: First footnote.
+[^1]: Primera nota al pie.
 
     [^2]:
 
-    Every new line in a footnote should be prefixed with 2 spaces.  
-    This allows you to have a footnote with multiple lines.
+    Cada nueva línea en una nota al pie debe ir precedida de 2 espacios.  
+    Esto te permite tener una nota al pie con varias líneas.
 
     [^note]:
 
-    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.
+    Las notas al pie con nombre se seguirán renderizando con números en lugar del texto, pero facilitan la identificación y el enlazado.
 
-Finally, to insert a line-break use
+Por último, para insertar un salto de línea usa
 
 ```markdown
 ***
 ```
 
-To produce this line-break:
+Para producir este salto de línea:
 
 --------------------------------------------------------------------------------
 
-### Other Markdown Resources
+### Otros recursos sobre Markdown
 
-There are plenty of good markdown resources out there:
+Hay muchos buenos recursos sobre markdown:
 
-- the [Reddit markdown guide](https://www.reddit.com/wiki/markdown)
-- the [github markdown guide](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-- this [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- la [guía de markdown de Reddit](https://www.reddit.com/wiki/markdown)
+- la [guía de markdown de github](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- esta [hoja de referencia de markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

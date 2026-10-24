@@ -3,23 +3,27 @@ aliases:
   - welcome.html
 ---
 
-# Welcome
+# Bienvenida
 
 [![DOI](https://zenodo.org/badge/496994611.svg)](https://zenodo.org/doi/10.5281/zenodo.10518241)  ![GitHub Release](https://img.shields.io/github/v/release/aeturrell/python4DS)
 
-This is the website for **Python for Data Science**, a book heavily inspired by the excellent [**R for Data Science (2e)**](https://r4ds.hadley.nz/). This book will teach you how to load up, transform, visualise, and begin to understand your data. The book aims to give you the skills you need to code for data science. It's suitable for people who have some familiarity with the ideas behind programming and coding but who don't yet know how to do data science.
+::: {.callout-note title="Sobre esta traducción"}
+Esta es una traducción al español, no oficial, del libro [**Python for Data Science**](https://aeturrell.github.io/python4DS/) de Arthur Turrell y la comunidad Py4DS, publicado con licencia MIT. Está basada en la versión 1.0.5 del original. La traducción se hizo con ayuda de inteligencia artificial y revisión humana; si encuentras un error, abre un [issue en el repositorio de la traducción](https://github.com/jromeroa94/python4DS-es/issues).
+:::
 
-This book teaches you how to do data science using one of the world's most popular programming languages, Python. While Python is a general purpose language, which means it is used for a wide range of tasks, it is also the most widely used language for data science (although note that both SQL and R are also used for data science).
+Este es el sitio web de **Python for Data Science**, un libro muy inspirado en el excelente [**R for Data Science (2e)**](https://r4ds.hadley.nz/). Este libro te enseñará a cargar, transformar y visualizar tus datos, y a empezar a comprenderlos. El objetivo del libro es darte las habilidades que necesitas para programar en ciencia de datos. Es adecuado para personas que tienen cierta familiaridad con las ideas básicas de la programación, pero que todavía no saben hacer ciencia de datos.
 
-To begin your data science journey, head to the next page.
+Este libro te enseña a hacer ciencia de datos usando uno de los lenguajes de programación más populares del mundo: Python. Aunque Python es un lenguaje de propósito general, lo que significa que se usa para una gran variedad de tareas, también es el lenguaje más utilizado en ciencia de datos (aunque ten en cuenta que SQL y R también se usan en ciencia de datos).
 
-## Contributors to Python4DS
+Para comenzar tu recorrido por la ciencia de datos, ve a la página siguiente.
 
-Contributing is very much encouraged. If you're looking for content to implement or tweak, we aim to follow the structure and content of **R for Data Science (2e)** and you can find open [issues here](https://github.com/aeturrell/python4DS/issues). For larger contributions of content, it's probably best to check with other contributors first.
+## Colaboradores de Python4DS
 
-We thank the following contributors:
+Las contribuciones son muy bienvenidas. Si buscas contenido para implementar o ajustar, nuestro objetivo es seguir la estructura y el contenido de **R for Data Science (2e)**, y puedes encontrar los [issues abiertos aquí](https://github.com/aeturrell/python4DS/issues). Para contribuciones de contenido más extensas, probablemente sea mejor consultar primero con otros colaboradores.
 
-- [Arthur Turrell](https://aeturrell.com/), who has also contributed to [*Coding for Economists*](https://aeturrell.github.io/coding-for-economists) and wrote popular non-fiction book [*The Star Builders*](https://aeturrell.com/thestarbuilders/thestarbuilders.html)
+Agradecemos a los siguientes colaboradores:
+
+- [Arthur Turrell](https://aeturrell.com/), quien también ha contribuido a [*Coding for Economists*](https://aeturrell.github.io/coding-for-economists) y escribió el popular libro de divulgación [*The Star Builders*](https://aeturrell.com/thestarbuilders/thestarbuilders.html)
 - [Pietro Monticone](https://github.com/pitmonticone)
 - [Antonio Mele](https://github.com/meleantonio)
 - [Igor Alshannikov](https://github.com/alshan)

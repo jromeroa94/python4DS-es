@@ -1,0 +1,69 @@
+name: Cambios en el original
+
+# Una vez por semana compara la versión del original en la que se basa la
+# traducción (SHA en UPSTREAM.md) con la rama main de aeturrell/python4DS.
+# Si el original cambió, abre un issue con los archivos y commits nuevos.
+
+on:
+  schedule:
+    - cron: "17 12 * * 1"  # lunes, 12:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Comparar con aeturrell/python4DS
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          base=$(grep -m1 -oE '\b[0-9a-f]{40}\b' UPSTREAM.md)
+          git fetch --quiet https://github.com/aeturrell/python4DS.git main
+          head=$(git rev-parse FETCH_HEAD)
+
+          if [ "$base" = "$head" ]; then
+            echo "Sin cambios: la traducción está al día con ${head:0:7}."
+            exit 0
+          fi
+
+          short=${head:0:7}
+          title="Cambios en el original hasta ${short}"
+          existing=$(gh issue list --state all --search "\"${title}\" in:title" --json number --jq 'length')
+          if [ "$existing" != "0" ]; then
+            echo "Ya existe un issue para ${short}."
+            exit 0
+          fi
+
+          files=$(git diff --name-status "$base" "$head" -- '*.ipynb' '*.qmd' '*.md' '_quarto.yml' 'data/**' | sed 's/^/- /')
+          [ -z "$files" ] && files="- (ningún archivo de contenido; revisa los commits)"
+
+          {
+            echo "El libro original tiene cambios posteriores a la versión traducida."
+            echo
+            echo "- Base de la traducción: aeturrell/python4DS@${base}"
+            echo "- Original actual: aeturrell/python4DS@${head}"
+            echo "- Comparación: https://github.com/aeturrell/python4DS/compare/${base}...${head}"
+            echo
+            echo "### Archivos de contenido modificados"
+            echo
+            echo "$files"
+            echo
+            echo "### Commits nuevos"
+            echo
+            git log --format='- %h %s' "${base}..${head}"
+            echo
+            echo "Cuando los cambios estén traducidos, actualiza el SHA de \`UPSTREAM.md\` y cierra este issue."
+          } > body.md
+
+          gh label create upstream --color 1d76db --description "Cambios en el libro original" --force
+          gh issue create --title "$title" --body-file body.md --label upstream

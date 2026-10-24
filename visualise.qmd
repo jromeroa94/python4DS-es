@@ -1,26 +1,26 @@
-# Visualisation {#sec-visualise}
+# Visualización {#sec-visualise}
 
-After reading the first part of the book, you understand the basics of the most important tools for doing data science. Now it’s time to start diving into the details. In this part of the book, you’ll learn about visualising data in further depth (in @sec-vis-layers), and get further stuck into the details of the different kinds of data visualisation (in @sec-exploratory-data-analysis and @sec-communicate-plots). In this short chapter, we discuss the different ways to create visualisations, and the different purposes of visualisations.
+Después de leer la primera parte del libro, ya conoces lo básico de las herramientas más importantes para hacer ciencia de datos. Ahora es momento de empezar a profundizar en los detalles. En esta parte del libro, aprenderás a visualizar datos con mayor profundidad (en @sec-vis-layers) y te adentrarás en los detalles de los distintos tipos de visualización de datos (en @sec-exploratory-data-analysis y @sec-communicate-plots). En este breve capítulo, analizamos las distintas formas de crear visualizaciones y los distintos propósitos que tienen.
 
-## Philosophies of data visualisation
+## Filosofías de la visualización de datos
 
-There are broadly two categories of approach to using code to create data visualisations: *imperative* (build what you want from individual elements) and *declarative* (say what you want from a list of pre-existing options). Choosing which to use involves a trade-off: imperative libraries offer you flexibility but at the cost of some verbosity; declarative libraries offer you a quick way to plot your data, but only if it’s in the right format to begin with, and customisation to special chart types is more difficult.
+A grandes rasgos, hay dos categorías de enfoques para crear visualizaciones de datos con código: *imperativo* (construyes lo que quieres a partir de elementos individuales) y *declarativo* (dices lo que quieres a partir de una lista de opciones preexistentes). Elegir cuál usar implica un compromiso: las librerías imperativas te ofrecen flexibilidad a costa de cierta verbosidad; las librerías declarativas te ofrecen una forma rápida de graficar tus datos, pero solo si ya están en el formato adecuado, y personalizar tipos de gráficos especiales resulta más difícil.
 
-Python has many excellent plotting packages, including perhaps the most powerful imperative plotting package around, **matplotlib**, and an amazing declarative library that we already saw, **lets-plot**. These two libraries will get you a long way, and each could be worthy of an entire book themselves. Fortunately for us, though, we can do 95% of what we need with a small number of commands from one or the other of them. In general, to keep this book as light as possible, we've opted to use **lets-plot** wherever possible—and @sec-vis-layers is going to take you on a more in-depth tour of how to use it yourself.
+Python tiene muchos paquetes excelentes para gráficos, entre ellos quizá el paquete de gráficos imperativo más potente que existe, **matplotlib**, y una librería declarativa extraordinaria que ya vimos, **lets-plot**. Estas dos librerías te llevarán muy lejos, y cada una podría merecer un libro entero. Por suerte para nosotros, podemos hacer el 95% de lo que necesitamos con un pequeño número de comandos de una u otra. En general, para que este libro sea lo más ligero posible, hemos optado por usar **lets-plot** siempre que ha sido posible, y @sec-vis-layers te llevará en un recorrido más detallado sobre cómo usarla por tu cuenta.
 
-## Purposes of data visualisation
+## Propósitos de la visualización de datos
 
-Data visualisation has all kinds of different purposes. It can be useful to bear in mind three broad categories of visualisation that are out there:
+La visualización de datos tiene todo tipo de propósitos. Puede ser útil tener en cuenta tres grandes categorías de visualización:
 
-- exploratory
-- scientific
-- narrative
+- exploratoria
+- científica
+- narrativa
 
-Let's look at each in a bit more detail.
+Veamos cada una con un poco más de detalle.
 
-### Exploratory Data Viz
+### Visualización exploratoria de datos
 
-The first of the three kinds is *exploratory data visualisation*, and it's the kind that you do when you're looking and data and trying to understand it. Just plotting the data is a really good strategy for getting a feel for any issues there might be. This is perhaps most famously demonstrated by Anscombe's quartet: four different datasets with the same mean, standard deviation, and correlation but very different data distributions.
+El primero de los tres tipos es la *visualización exploratoria de datos*, y es la que haces cuando estás mirando los datos e intentando entenderlos. Simplemente graficar los datos es una muy buena estrategia para hacerte una idea de los problemas que pueda haber. Quizá el ejemplo más famoso de esto es el cuarteto de Anscombe: cuatro datasets distintos con la misma media, desviación estándar y correlación, pero con distribuciones de datos muy diferentes.
 
 ```{python}
 #| echo: false
@@ -82,22 +82,22 @@ for ax, (label, (x, y)) in zip(axs.flat, datasets.items()):
         horizontalalignment="right",
     )
 
-plt.suptitle("Anscombe's Quartet")
+plt.suptitle("Cuarteto de Anscombe")
 plt.show()
 ```
 
-Exploratory visualisation is usually quick and dirty, and flexible too. Some exploratory data viz can be automated, and there's a whole host of packages to help with this, including [**skimpy**](https://aeturrell.github.io/skimpy/).
+La visualización exploratoria suele ser rápida y poco pulida, además de flexible. Parte de la visualización exploratoria de datos se puede automatizar, y hay una gran cantidad de paquetes que ayudan con esto, como [**skimpy**](https://aeturrell.github.io/skimpy/).
 
-Beyond you and perhaps your co-authors/collaborators, however, not many other people should be seeing your exploratory visualisation! They will typically be worked up quickly, be numerous, and be throw-away. We'll look more at this in @sec-exploratory-data-analysis.
+Sin embargo, aparte de ti y quizá de tus coautores o colaboradores, ¡no mucha gente debería ver tus visualizaciones exploratorias! Normalmente se elaboran rápido, son numerosas y desechables. Veremos esto con más detalle en @sec-exploratory-data-analysis.
 
-### Scientific Data Viz
+### Visualización científica de datos
 
-The second kind, scientific data visualisation, is the prime cut of your exploratory visualisation. It's the kind of plot you might include in a more technical paper, the picture that says a thousand words. I often think of the first image of a black hole @akiyama2019first as a prime example of this. You can get away with having a high density of information in a scientific plot and, in short format journals, you may need to. The journal Physical Review Letters, which has an 8 page limit, has a classic of this genre in more or less every issue. Ensuring that important values can be accurately read from the plot is especially important in these kinds of charts. But they can also be the kind of plot that presents the killer results in a study; they might not be exciting to people who don't look at charts for a living, but they might be exciting and, just as importantly, understandable by your peers.
+El segundo tipo, la visualización científica de datos, es lo más selecto de tu visualización exploratoria. Es el tipo de gráfico que podrías incluir en un artículo más técnico, la imagen que vale más que mil palabras. A menudo pienso en la primera imagen de un agujero negro @akiyama2019first como un ejemplo destacado. En un gráfico científico puedes permitirte una alta densidad de información y, en revistas de formato breve, quizá lo necesites. La revista Physical Review Letters, que tiene un límite de 8 páginas, incluye un clásico de este género prácticamente en cada número. En este tipo de gráficos es especialmente importante asegurarse de que los valores relevantes se puedan leer con precisión. Pero también pueden ser el tipo de gráfico que presenta los resultados clave de un estudio; puede que no entusiasmen a quienes no se dedican a mirar gráficos, pero sí pueden resultar interesantes y, igual de importante, comprensibles para tus colegas.
 
-This type of visualisation is especially popular in the big science journals like *Nature* and *Science*, where space is at a premium. We won't cover this type of plot in this book, because it tends to be very bespoke.
+Este tipo de visualización es especialmente popular en las grandes revistas científicas como *Nature* y *Science*, donde el espacio es muy valioso. No cubriremos este tipo de gráfico en este libro, porque suele ser muy hecho a medida.
 
-### Narrative Data Viz
+### Visualización narrativa de datos
 
-The third and final kind is narrative data visualisation. This is the one that requires the most thought in the step where you go from the first view to the end product. It's a visualisation that doesn't just show a picture, but gives an insight. These are the kind of visualisations that you might see in the *Financial Times*, *The Economist*, or on the *BBC News* website. They come with aids that help the viewer focus on the aspects that the creator wanted them to (you can think of these aids or focuses as doing for visualisation what bold font does for text). They're well worth using in your work, especially if you're trying to communicate a particular narrative, and especially if the people you're communicating with don't have deep knowledge of the topic. You might use them in a paper that you hope will have a wide readership, in a blog post summarising your work, or in a report intended for a policymaker.
+El tercer y último tipo es la visualización narrativa de datos. Es la que requiere más reflexión en el paso que va de la primera vista al producto final. Es una visualización que no solo muestra una imagen, sino que aporta una idea. Son el tipo de visualizaciones que podrías ver en el *Financial Times*, *The Economist* o en el sitio web de *BBC News*. Incluyen ayudas que permiten al espectador centrarse en los aspectos que el creador quería destacar (puedes pensar que estas ayudas o puntos de enfoque hacen en la visualización lo que la negrita hace en el texto). Vale mucho la pena usarlas en tu trabajo, sobre todo si intentas comunicar una narrativa concreta y, especialmente, si las personas a las que te diriges no tienen un conocimiento profundo del tema. Podrías usarlas en un artículo que esperas que tenga muchos lectores, en una entrada de blog que resuma tu trabajo o en un informe dirigido a un responsable de políticas públicas.
 
-You can find more information on the topic of communicating via data visualisations in the @sec-communicate-plots chapter.
+Puedes encontrar más información sobre cómo comunicar mediante visualizaciones de datos en el capítulo @sec-communicate-plots.

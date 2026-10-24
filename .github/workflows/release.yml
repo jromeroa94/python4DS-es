@@ -1,23 +1,28 @@
-name: Release
+name: Publicar libro
+
+# Construye el libro en español y lo publica en GitHub Pages (rama gh-pages)
+# cada vez que hay cambios en main.
 
 permissions:
   contents: write
-  pages: write
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: publicar-libro
+  cancel-in-progress: false
 
 jobs:
-  release:
-    name: Release
+  publish:
+    name: Construir y publicar
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Install uv
         uses: astral-sh/setup-uv@v4
@@ -33,30 +38,6 @@ jobs:
         with:
           version: "1.5.57"
 
-      - name: Check if there is a parent commit
-        id: check-parent-commit
-        run: |
-          echo "::set-output name=sha::$(git rev-parse --verify --quiet HEAD^)"
-
-      - name: check toml file working
-        run: |
-          echo uvx --from=toml-cli toml get --toml-path=pyproject.toml project.version
-
-      - name: Detect and tag new version
-        id: check-version
-        if: steps.check-parent-commit.outputs.sha
-        uses: salsify/action-detect-and-tag-new-version@v2.0.3
-        with:
-          version-command: |
-            uvx --from=toml-cli toml get --toml-path=pyproject.toml project.version
-
-      - name: Bump version for developmental release
-        if: "! steps.check-version.outputs.tag"
-        run: |
-          uv run version_bumper.py &&
-          version=$(uvx --from=toml-cli toml get --toml-path=pyproject.toml project.version) &&
-          uvx --from=toml-cli toml set --toml-path=pyproject.toml project.version $version.dev.$(date +%s)
-      
       - name: set timezone
         run: |
           TZ="Europe/London" &&
@@ -70,17 +51,11 @@ jobs:
         run: |
           uv run quarto render --execute
         env:
-            # This forces Quarto to use the Python inside your uv venv
-            QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
+          # This forces Quarto to use the Python inside your uv venv
+          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
 
       - name: Publish
-        if: steps.check-version.outputs.tag
-        run: uv run quarto publish gh-pages --no-render --no-browser
-
-      - name: Publish the release notes
-        uses: release-drafter/release-drafter@v6.0.0
-        with:
-          publish: ${{ steps.check-version.outputs.tag != '' }}
-          tag: ${{ steps.check-version.outputs.tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          uv run quarto publish gh-pages --no-render --no-browser

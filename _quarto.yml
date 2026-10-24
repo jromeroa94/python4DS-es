@@ -2,25 +2,26 @@ project:
   type: book
   output-dir: _book
 
+lang: es
+
 book:
   title: "Python for Data Science"
-  author: "The Py4DS Community"
+  author: "The Py4DS Community · traducción al español"
   favicon: favicon.ico
   cover-image: logo.png
-  repo-url: https://github.com/aeturrell/python4DS
+  repo-url: https://github.com/jromeroa94/python4DS-es
   repo-branch: main
   repo-actions: [edit, issue]
-  google-analytics: "G-LXJC37BJVX"
   sidebar:
     style: docked
     collapse-level: 1
   chapters:
     - index.md
-    - part: "Introduction"
+    - part: "Introducción"
       chapters:
         - introduction.ipynb
         - prerequisites.ipynb
-    - part: "Quick Start"
+    - part: "Inicio rápido"
       chapters:
         - whole-game.ipynb
         - data-visualise.ipynb
@@ -32,13 +33,13 @@ book:
         - data-import.ipynb
         - workflow-packages-and-environments.qmd
         - workflow-help.qmd
-    - part: "Visualise"
+    - part: "Visualizar"
       chapters:
         - visualise.qmd
         - vis-layers.ipynb
         - exploratory-data-analysis.ipynb
         - communicate-plots.ipynb
-    - part: "Transform"
+    - part: "Transformar"
       chapters:
         - boolean-data.ipynb
         - numbers.ipynb
@@ -48,18 +49,18 @@ book:
         - dates-and-times.ipynb
         - missing-values.ipynb
         - joins.ipynb
-    - part: "Import"
+    - part: "Importar"
       chapters:
         - spreadsheets.ipynb
         - databases.ipynb
         - rectangling.ipynb
         - webscraping-and-apis.ipynb
-    - part: "Programme"
+    - part: "Programar"
       chapters:
         - functions.ipynb
         - iteration.ipynb
         - command-line.md
-    - part: "Communicate"
+    - part: "Comunicar"
       chapters:
         - markdown.md
         - quarto.qmd
